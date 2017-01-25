@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/test', 'CategoryController@index');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/pages', 'admin\PageController@index');
+    Route::resource('/categories', 'admin\CategoryController');
+});
+
