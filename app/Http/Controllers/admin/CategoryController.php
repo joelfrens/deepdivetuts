@@ -55,7 +55,7 @@ class CategoryController extends Controller
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
-            'name'       => 'required',
+            'name'       => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -72,7 +72,31 @@ class CategoryController extends Controller
             // store
             $category = new Category;
             $category->name       = Input::get('name');
-            $category->visible       = 1;
+            $category->visible       = Input::get('visible');
+            $category->desc       = Input::get('desc');
+
+            //get image
+            $destinationPath = 'uploads';
+            $filename = '';
+
+            $file = Input::file('categoryimage');
+            
+            $rules = array('file' => 'required');
+            $validator = Validator::make(array('file' => $file), $rules);
+
+            if ($validator->passes()){
+
+                $filename = $file->getClientOriginalName();
+
+                $file->move($destinationPath, $filename);
+
+            }
+
+            if($filename != '')
+                $category->category_image = $filename;
+            else
+                $category->category_image = '';
+
             $category->save();
 
             // redirect
@@ -92,7 +116,6 @@ class CategoryController extends Controller
     {
         // get the category
         $category = Category::find($id);
-
         // show the edit form and pass the category
         return view('admin.category.edit')
             ->with('category', $category);
@@ -126,7 +149,8 @@ class CategoryController extends Controller
             // store
             $category = Category::find($id);
             $category->name       = Input::get('name');
-            $category->visible       = 1;
+            $category->visible       = Input::get('visible');
+            $category->desc       = Input::get('desc');
             $category->save();
 
             // redirect

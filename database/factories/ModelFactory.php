@@ -33,7 +33,14 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
     ];
 });
 
-
+$factory->define(App\Video::class, function (Faker\Generator $faker) {
+    
+    return [
+        'title' => $faker->name,
+        'description' => '',
+        'status' => 1
+    ];
+});
 
 
 
