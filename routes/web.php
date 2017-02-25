@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\CheckStatus;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +24,14 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/test', 'CategoryController@index');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function () {
     Route::get('/pages', 'admin\PageController@index');
     Route::resource('/categories', 'admin\CategoryController');
+
+    //API Route
+    Route::get('/apicall/categories', 'admin\CategoryController@show');
 });
+
+
+
 

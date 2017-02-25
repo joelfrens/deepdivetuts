@@ -30,9 +30,19 @@ class CategoryController extends Controller
     {
         // get all the categories
         $categories = DB::table('categories')->paginate(15);
-
         // load the view and pass the categories
         return view('admin.category.index', ['categories' => $categories]);
+    }
+
+    public function show()
+    {
+        // get all the categories
+        $categories = DB::table('categories')->paginate(15);
+
+        // load the view and pass the categories
+        //return view('admin.category.index', ['categories' => $categories]);
+        return $categories;
+        exit;
     }
 
     /**
