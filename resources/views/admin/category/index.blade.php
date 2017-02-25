@@ -4,7 +4,20 @@
 <div class="container">
     <div class="row">
 
-        <h1>All Categories</h1>
+    <!--<div id="app">
+    <example></example>
+
+        <ul>
+            <li v-for="category in categories">
+                @{{category.name}}
+            </li>
+                
+
+        </ul>
+
+    </div>-->
+
+         <h1>All Categories</h1>
 
         <div><a href="{{ URL::to('admin/categories/create') }}">Create a Category</a></div>
 
@@ -44,4 +57,5 @@
 
     </div>
 </div>
+
 @endsection

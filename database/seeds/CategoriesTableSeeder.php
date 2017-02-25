@@ -11,6 +11,11 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = factory(App\Category::class, 20)->create();
+        $categories = factory(App\Category::class, 20)->create()->each(function ($u) {
+        		for ($i=0; $i<5; $i++)
+        		{
+		        	$u->videos()->save(factory(App\Video::class)->make());
+		    	}
+		    });
     }
 }

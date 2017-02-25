@@ -16,5 +16,27 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+    	message: 'Listing Categories',
+    	categories: false
+    },
+    methods: {
+    	fetchCategories: function(){
+    		this.$http.get('/admin/apicall/categories').then(function(response){
+    			console.log(response.body.data);
+    			this.categories = response.body.data;
+    		}, function(response){
+
+    		});
+    	},
+    	ready: function() {
+    		this.fetchCategories();
+    	}
+    }
 });
+
+
+app.fetchCategories();
+
+
