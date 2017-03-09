@@ -2,12 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Category extends Model
+use Illuminate\Database\Eloquent\Model;
+
+class Tag extends Model
 {
-    use Sluggable;
+   use Sluggable;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -23,14 +24,13 @@ class Category extends Model
         ];
     }
 
-    public function videos()
-    {
-        return $this->hasMany('App\Video');
-    }
+    protected $fillable = [
+    	'name', 'id'
+    ];
 
-    public function categories()
+    public function article()
     {
-        return $this->belongsTo('App\Article');
+    	return $this->belongsToMany(Article::class);
     }
 
 }
