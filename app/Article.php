@@ -36,7 +36,7 @@ class Article extends Model
         return $this->hasMany(article_images::class);
     }
 
-    public function category()
+    public function categories()
     {
         return $this->hasOne(Category::class);
     }

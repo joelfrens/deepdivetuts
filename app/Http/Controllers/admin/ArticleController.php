@@ -31,8 +31,12 @@ class ArticleController extends Controller
     public function index(Request $request)
     {   
 
+        \DB::connection()->enableQueryLog();
         // Get users articles
-        $articles = \App\Article::where('user_id', $request->user()->id)->orderBy('id', 'desc')->paginate(5);
+        $articles = \App\Article::with(['tag','article_images'])->where('user_id', $request->user()->id)->orderBy('id', 'desc')->paginate(5);
+        
+        $query = \DB::getQueryLog();
+        dd($query);
 
         // Get all categories
         $categories = \App\Category::pluck('name','id');
@@ -133,6 +137,8 @@ class ArticleController extends Controller
         // Get all tags
         $tags = \App\Tag::pluck('name','id');
         
+        $selectedtags = array();
+
         foreach ($article['tag'] as $tag) {
             $selectedtags[] = $tag['id'];
         }
