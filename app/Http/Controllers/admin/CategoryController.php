@@ -161,6 +161,27 @@ class CategoryController extends Controller
             $category->name       = Input::get('name');
             $category->visible       = Input::get('visible');
             $category->desc       = Input::get('desc');
+            //get image
+            $destinationPath = 'uploads';
+            $filename = '';
+            $file = Input::file('categoryimage');
+            
+            $rules = array('file' => 'required');
+            $validator = Validator::make(array('file' => $file), $rules);
+
+            if ($validator->passes()){
+
+                $filename = $file->getClientOriginalName();
+
+                $file->move($destinationPath, $filename);
+
+            }
+
+            if($file != '')
+                $category->category_image = $filename;
+            
+
+            
             $category->save();
 
             // redirect

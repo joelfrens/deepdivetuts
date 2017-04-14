@@ -1,0 +1,126 @@
+/* ============================================ *
+ * Header
+ *
+ *
+ * ============================================ */
+
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+
+.login-container {
+	max-width: 450px;
+	margin: 100px auto;
+	.logo-img {
+		display: block;
+		font-size: 45px;
+	}
+	.login-sep {
+		color: @login-sep-color;
+		margin: 15px 0;
+	}
+	.login-label {
+		padding-left: 12px;
+	}
+	.login-icon {
+		position: absolute;
+		top: 22px;
+		right: 17px;
+		font-size: 16px;
+		color: @login-field-icon-color;
+	}
+	.form-group {
+		position: relative;
+		padding: 0 5px;
+	}
+	.login-bottom-wrap {
+		margin: 0 17px;
+	}
+	.remember-me {
+		display: inline-block;
+		float: right;
+		margin-top: 6px;
+	}
+	.forgot-password {
+		color: @theme-grey;
+		font-size: 11px;
+	}
+}
+
+.login-field {
+	height: 26px;
+	border-radius: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	.box-shadow(none);
+	&:focus {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		.box-shadow(none);
+	}
+}
+
+
+.login-form {
+	background-color: @theme-white;
+	padding: 20px 0;
+}
+
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+
+
+// *** Mobile devices only (less than 480px) *** //
+@media (max-width: (@screen-phone - 1)) {
+	.login-btn {
+		min-width: 100px;
+	}
+}
+
+// *** Mobile & tablet devices only (less than 600px) *** //
+@media (max-width: @screen-xs-max) {
+
+}
+
+// *** Mobile & tablet devices only (less than 770px) *** //
+@media (max-width: @screen-sm-max) {
+}
+
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+	.login-container {
+		.logo-img {
+			font-size: 50px;
+		}
+	}
+	.login-btn {
+		min-width: 150px;
+	}
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

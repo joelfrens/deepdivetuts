@@ -25,9 +25,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', 'CategoryController@index');
 
 Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function () {
-    Route::get('/pages', 'admin\PageController@index');
     Route::resource('/categories', 'admin\CategoryController');
-
+    Route::resource('/articles', 'admin\ArticleController');
     //API Route
     Route::get('/apicall/categories', 'admin\CategoryController@show');
 
@@ -38,13 +37,11 @@ Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function
     Route::PATCH('/tag/update/{id}', ['as' => 'tag.update', 'uses' => 'admin\TagController@update']);
     Route::delete('/tag/{tag}', 'admin\TagController@destroy');
 
-    // Articles Routes
-	Route::get('/articles', 'admin\ArticleController@index');
-    Route::post('/article', ['as'=>'article.add','uses' => 'admin\ArticleController@add']);
-    Route::get('/article/edit/{id}', 'admin\ArticleController@edit');
-    Route::get('/article/edit/{id}',['as' => 'article.edit','uses' => 'admin\ArticleController@edit']);
-    Route::PATCH('/article/update/{id}', ['as' => 'article.update', 'uses' => 'admin\ArticleController@update']);
-    Route::delete('/article/{article}', 'admin\ArticleController@destroy');
+    
+    // Subscription Routes
+    Route::resource('/subscriptions', 'admin\SubscriptionController');
+    Route::resource('/pages', 'admin\PageController');
+    
 });
 
 

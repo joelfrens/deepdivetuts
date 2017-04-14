@@ -1,0 +1,61 @@
+/* ============================================ *
+* Theme: buttons
+*
+*
+* ============================================ */
+.btn {
+	border-radius: 0;
+	border: none;
+	background-color: transparent;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+	outline: 0;
+	outline-offset: 0;
+}
+.btn:active, .btn.active {
+	box-shadow: none;
+}
+
+.btn-primary {
+	background-color: @form-field-main-color;
+}
+.btn-primary:hover {
+	background-color: darken(@form-field-main-color, 10%);
+	border-color: @form-field-main-color;
+}
+
+.btn-primary:active {
+	background-color: darken(@form-field-main-color, 10%);
+	border-color: @form-field-main-color;
+}
+
+.btn-trans {
+	background-color: transparent;
+}
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

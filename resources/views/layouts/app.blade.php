@@ -10,10 +10,14 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <!--- CSS Files here-->
+    <link rel="stylesheet" href="/assets/build/css/app.css">
 
-    <!-- Scripts -->
+    <!--- JS Files here-->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+    <script src="/assets/build/js/app_head.min.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -21,74 +25,56 @@
     </script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+    <div class="page-wrapper">
+    <!-- Page header -->
+    <div class="page-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+        <!-- Nav top bar -->
+        @if (!Auth::guest())
+        <div class="nav-top-wrapper">
+            <div class="nav-top-left">
+                <i class="fa fa-envira logo-img" aria-hidden="true"></i>
+            </div>
+            <div class="nav-top-right">
+                <div class="dropdown">
+                    <a class="btn dropdown-toggle user-drop-link no-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="fa fa-user btn dropdown-toggle user-drop-icon" aria-hidden="true"></i>
+                        {{ Auth::user()->name }}
+                        <span class="caret"></span>
                     </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            <li><a href="{{ url('admin/tags') }}">Tags</a></li>
-                            <li><a href="{{ url('admin/articles') }}">Articles</a></li>
-                            <li><a href="{{ url('admin/categories') }}">Categories</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
+                    <ul class="dropdown-menu nav-top-drop" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Settings</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="{{ url('/logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+        @endif
+        <!-- Nav top bar -->
 
-        @yield('content')
+        <!-- Nav left bar -->
+        @if (!Auth::guest())
+            @include('common/navleft')
+        @endif
+        <!-- Nav left bar -->
 
-        @yield('content1')
+         @yield('content')
 
-        @yield('content2')
     </div>
+    <!-- Page header -->
+</div>
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+<!-- Scripts -->
+<script src="/assets/build/js/app_foot.min.js"></script>
 </body>
 </html>
