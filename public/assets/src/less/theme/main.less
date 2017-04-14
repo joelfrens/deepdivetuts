@@ -1,0 +1,189 @@
+/* ============================================ *
+ * Name
+ *
+ *
+ * ============================================ */
+
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+
+body {
+	font-family: @font-family;
+	letter-spacing: @letter-spacing;
+	margin: 0;
+	padding: 0;
+	color: @theme-main;
+	font-size: @font-small;
+	background-color: @theme-body-bg;
+}
+
+.border-all {
+	border: 1px solid red;
+}
+
+.page-content {
+	width: auto;
+	position: relative;
+	.box-shadow(0px 0px 17px -6px @theme-shadow-color);
+}
+
+/** Bootstrap overides **/
+.dropdown-menu {
+	border: none;
+	border-radius: 0;
+}
+
+.content {
+	padding-bottom: 20px;
+}
+
+.intro-container {
+	max-width: 450px;
+	margin: 150px auto;
+	.intro-box {
+		background-color: @theme-white;
+		padding: 30px;
+		font-size: 18px;
+		.box-shadow(7px 4px 22px -4px rgb(196, 239, 235));
+	}
+	a {
+		color: #009688;
+	}
+}
+.intro-border-left, .intro-border-right {
+	position: fixed;
+	width: 10px;
+	color: blue;
+	top: 0;
+	bottom: 0;
+}
+.border-intro-strip {
+	position: fixed;
+	width: 10px;
+	color: blue;
+	top: 0;
+	bottom: 0;
+}
+.intro-border-a {
+	background: #009688;
+}
+.intro-border-b {
+	background: #26A69A;
+	top: 10px;
+	bottom: 10px;
+}
+.intro-border-c {
+	background: #4DB6AC;
+	top: 20px;
+	bottom: 20px;
+}
+.intro-border-d {
+	background: #80CBC4;
+	top: 30px;
+	bottom: 30px;
+}
+.intro-border-e {
+	background: #B2DFDB;
+	top: 40px;
+	bottom: 40px;
+}
+.intro-border-left {
+	left: 0;
+	.intro-border-a {
+		left: 0;
+	}
+	.intro-border-b {
+		left: 10px;
+	}
+	.intro-border-c {
+		left: 20px;
+	}
+	.intro-border-d {
+		left: 30px;
+	}
+	.intro-border-e {
+		left: 30px;
+	}
+}
+.intro-border-right {
+	right: 0;
+	.intro-border-a {
+		right: 0;
+	}
+	.intro-border-b {
+		right: 10px;
+	}
+	.intro-border-c {
+		right: 20px;
+	}
+	.intro-border-d {
+		right: 30px;
+	}
+	.intro-border-e {
+		right: 30px;
+	}
+}
+
+/** Bootstrap overides **/
+
+a {
+	color: @anchor-color;
+	&:hover {
+		color: @anchor-hover-color;
+		text-decoration: none;
+	}
+}
+
+// *** Mobile devices only (less than 480px) *** //
+@media (max-width: (@screen-phone - 1)) {
+
+}
+
+// *** Mobile & tablet devices only (less than 600px) *** //
+@media (max-width: @screen-xs-max) {
+}
+
+// *** Mobile & tablet devices only (less than 770px) *** //
+@media (max-width: @screen-sm-max) {
+	.page-content {
+		margin-top: 10px;
+	}
+}
+
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+	.page-content {
+		margin-top: 46px;
+		margin-left: 185px;
+	}
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

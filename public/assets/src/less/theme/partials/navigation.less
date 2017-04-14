@@ -1,0 +1,170 @@
+/* ============================================ *
+ * Navigation
+ *
+ *
+ * ============================================ */
+
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+
+.nav-top-wrapper {
+	background-color: @theme-nav-top-bg;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 38px;
+	overflow: visible;
+	z-index: @nav-top-zindex;
+	.clearfix();
+	.box-shadow(0px 0px 17px -6px @theme-shadow-color);
+	.user-drop-icon {
+		font-size: 1.3em;
+		color: @nav-top-icon-color;
+		padding: 0 0.3em 0 0;
+	}
+	.user-drop-link {
+		padding: 0.6em 0.2em;
+	}
+	.caret {
+		color: @nav-top-icon-color;
+	}
+	.nav-top-drop > li > a:hover, .nav-top-drop > li > a:focus {
+		text-decoration: none;
+		background-color: @nav-top-icon-color;
+		color: @theme-white;
+	}
+}
+
+.nav-left-wrapper {
+	background-color: @theme-nav-left-bg;
+	.box-shadow(0px 0px 17px -6px @theme-shadow-color);
+	.nav-left-item {
+		list-style: none;
+		padding: 0.5em;
+		.clearfix();
+		border-bottom: 1px solid @theme-light-grey;
+	}
+	.nav-left-subitem {
+		padding: 0.5em;
+	}
+	.nav-chevron-right {
+		font-size: 0.9em;
+		padding-top: 0.3em;
+	}
+
+	.nav-left-icon {
+		width: 20px;
+		text-align: center;
+		color: @theme-nav-ic-color;
+	}
+	.nav-left-text {
+		min-width: 120px;
+	}
+	.nav-left-logged-info {
+		padding: 10px;
+		position: relative;
+	}
+	.main-link, .sub-link {
+		display: block;
+	}
+	.sub-link {
+		padding-left: 15px;
+	}
+	.page-icon {
+		color: @theme-nav-page-color
+	}
+}
+
+
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+
+
+// *** Mobile devices only (less than 480px) *** //
+@media (max-width: (@screen-phone - 1)) {
+}
+
+// *** Mobile & tablet devices only (less than 600px) *** //
+@media (max-width: @screen-xs-max) {
+}
+
+// *** Mobile & tablet devices only (less than 770px) *** //
+@media (max-width: @screen-sm-max) {
+	.nav-top-right {
+		background-color: @theme-white;
+		.box-shadow(0px 0px 17px -6px @theme-shadow-color);
+		margin-top: 5px;
+		padding: 0 10px;
+	}
+	.nav-left-chevron-wrapper {
+		float: right;
+	}
+    .nav-left-wrapper {
+	    width: 100%;
+	    position: relative;
+	    margin-top: 92px;
+    }
+}
+
+// *** less than 980px *** //
+@media (max-width: @screen-md-max) {
+	/*.nav-left-wrapper-thin {
+		width: 50px;
+		.nav-left-chevron-wrapper,
+		.nav-left-link {
+			display: none;
+		}
+		.nav-left-icon {
+			width: 36px !important;
+		}
+	}*/
+}
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+	.nav-top-right {
+		float: right;
+	}
+	.nav-top-left {
+		float: left;
+	}
+	.nav-top-drop {
+		right: 0;
+		left: auto;
+	}
+	.nav-left-wrapper {
+		top: 46px;
+		min-height: 650px;
+		position: fixed;
+		left: 0;
+	}
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+	.nav-left-wrapper {
+		width: 175px;
+	}
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

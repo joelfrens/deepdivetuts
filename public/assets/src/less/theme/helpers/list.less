@@ -1,0 +1,89 @@
+/* ============================================ *
+* Theme: buttons
+*
+*
+* ============================================ */
+.disp-link {
+	display: inline-block;
+	float: right;
+	color: @theme-white !important;
+}
+
+.icon-disp-link {
+	font-size: 20px;
+}
+
+.table-edit-ic {
+	color: @table-edit-ic-color;
+}
+
+.table-del-ic {
+	color: @form-field-disabled-color;
+	font-size: 18px;
+}
+
+.table-del-ic.active {
+	color: @table-del-ic-color;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+	background-color: @table-list-strip-color;
+}
+
+.breadcrumb {
+	background-color: @breadcrumb-bgcolor;
+	color: @theme-white;
+	border-radius: 0;
+}
+
+.table-row-del {
+	font-size: 17px;
+    color: @table-row-del-color;
+}
+
+.pagination-container {
+	.pagination {
+		border-radius: 0;
+		li a, .disabled span {
+			border-radius: 0 !important;
+			color: inherit !important;
+		}
+	}
+	.active {
+		color: @theme-white;
+		span {
+			background-color: @pag-active-bgcolor;
+			&:hover {
+				background-color: @pag-active-bgcolor;
+			}
+		}
+	}
+}
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

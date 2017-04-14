@@ -31,18 +31,32 @@ class ArticleController extends Controller
     public function index(Request $request)
     {   
 
-        \DB::connection()->enableQueryLog();
         // Get users articles
-        $articles = \App\Article::with(['tag','article_images'])->where('user_id', $request->user()->id)->orderBy('id', 'desc')->paginate(5);
-        
-        $query = \DB::getQueryLog();
-        dd($query);
+        $articles = DB::table('articles')
+                    ->join('categories', 'articles.category_id', '=', 'categories.id')
+                    ->join('users', 'articles.user_id', '=', 'users.id')
+                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->paginate(15);
 
         // Get all categories
         $categories = \App\Category::pluck('name','id');
-
+        
         // Get all tags
         $tags = \App\Tag::pluck('name','id');
+        
+        foreach ($articles as $article) {
+            // Get article details based on the Id
+            $item = \App\Article::with('tag')->findORFail($article->id);
+            // add tags to the articles
+                        
+            $selectedtags = array();
+
+            foreach ($item['tag'] as $tag) {
+                $selectedtags[] = $tag['name'];
+            }
+            $article->tags = $selectedtags;
+
+        }
 
         // $articles = DB::table('articles')->get(); <- just for reference
         // Send array of articles to the view
@@ -54,14 +68,44 @@ class ArticleController extends Controller
 
     }
 
+    public function show()
+    {
+        // get all the categories
+        $articles = DB::table('articles')->paginate(15);
+
+        // load the view and pass the categories
+        //return view('admin.category.index', ['categories' => $categories]);
+        return $articles;
+        exit;
+    }
+
     /**
-     * Add the article in the database
+     * Show the form for creating a new resource.
      *
-     * @param Request $request
-     *
-     * @return Array $articles
+     * @return Response
      */
-    public function add(Request $request)
+    public function create()
+    {
+        // Get all categories
+        $categories = \App\Category::pluck('name','id');
+        
+        // Get all tags
+        $tags = \App\Tag::pluck('name','id');
+
+        // $articles = DB::table('articles')->get(); <- just for reference
+        // Send array of articles to the view
+        return view('admin.article.create', [
+            'categories' => $categories,
+            'tags' => $tags
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(Request $request)
     {
 
         //dd($request);
@@ -178,11 +222,21 @@ class ArticleController extends Controller
         $input = $request->all();
 
         // Save the input
-        $article->fill($input)->save();
+        //$article->fill($input)->save();
+        \App\Article::where('id', $id)
+          ->update([
+                'title' => $request->title,
+                'content' => $request->content,
+                'xcoordinate' => $request->xcoordinates,
+                'ycoordinate' => $request->ycoordinates,
+                'category_id' => $request->category_id,
+                'active' => $request->status,
+                'meta_keywords' => 'test'
+            ]);
 
         // Multiple images input
         $files = \Input::file('image');
-
+        
         //upload Images
         $uploaded = $this->uploadImages($files,$id,$article);
 
@@ -245,37 +299,37 @@ class ArticleController extends Controller
         $rules = array('file' => 'required'); 
         
         if($file_count > 0){
-        # Process all the images array
-        foreach($files as $file) {
+            # Process all the images array
+            foreach($files as $file) {
+                
+                // Validate image to be only png,gif,jpeg,txt,pdf,doc
+                $validator = \Validator::make(array('file'=> $file), $rules);
+                
+                // Check for validation
+                if($validator->passes()){
+
+                    // set filname
+                    $filename = $file->getClientOriginalName();
+
+                    // upload the files to the destination folder
+                    $upload_success = $file->move($destinationPath, $filename);
+
+                    // Add images
+                    $image = new \App\article_images(array(
+                        'article_id' => $id,
+                        'image' => $filename
+                    ));
+
+                    // Perform save query
+                    $image = $article->article_images()->save($image);
+
+                    // return success
+                    if($image)
+                        return true;
+
+                }
             
-            // Validate image to be only png,gif,jpeg,txt,pdf,doc
-            $validator = \Validator::make(array('file'=> $file), $rules);
-            
-            // Check for validation
-            if($validator->passes()){
-
-                // set filname
-                $filename = $file->getClientOriginalName();
-
-                // upload the files to the destination folder
-                $upload_success = $file->move($destinationPath, $filename);
-
-                // Add images
-                $image = new \App\article_images(array(
-                    'article_id' => $id,
-                    'image' => $filename
-                ));
-
-                // Perform save query
-                $image = $article->article_images()->save($image);
-
-                // return success
-                if($image)
-                    return true;
-
             }
-        
-        }
         }
     }
 
