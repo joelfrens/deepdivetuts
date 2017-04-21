@@ -7,7 +7,7 @@
             <div class="col-xs-12">
                 <div class="breadcrumb">
                     Categories
-                    <a class="no-link disp-link" href="{{ url('admin/categories/create') }}">
+                    <a class="no-link disp-link" href="{{ url('admin/settings/create') }}">
                         <i class="fa fa-plus icon-disp-link" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -19,7 +19,7 @@
             <div class="col-xs-12">
                 <div class="table-list">
                     <div class="pagination-container">
-                        {{ $categories->links() }}
+                        {{ $settings->links() }}
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -30,6 +30,8 @@
                                 </th>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Setting Code</th>
+                                <th>Setting Value</th>
                                 <th>
                                     <i class="fa fa-trash-o table-del-ic" aria-hidden="true"></i>
                                     <!-- {{ Form::open(array('url' => 'admin/categories/', 'class' => 'btn btn-small')) }}
@@ -40,15 +42,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $key => $value)
+                            @foreach($settings as $key => $value)
                                 <tr>
                                     <td>
                                         <input type="checkbox" class="table-list-check" />
                                     </td>
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->name }}</td>
+                                    <td>{{ $value->code }}</td>
+                                    <td>{{ $value->value }}</td>
                                     <td>
-                                        <a href="{{ URL::to('admin/categories/' . $value->id . '/edit') }}">
+                                        <a href="{{ URL::to('admin/settings/' . $value->id . '/edit') }}">
                                             <i class="fa fa-pencil table-edit-ic" aria-hidden="true"></i>
                                         </a>
                                     </td>
@@ -58,7 +62,7 @@
                         </table>
                     </div>
                     <div class="pagination-container">
-                        {{ $categories->links() }}
+                        {{ $settings->links() }}
                     </div>
                 </div>
             </div>

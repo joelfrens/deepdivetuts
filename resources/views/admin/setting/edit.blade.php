@@ -30,37 +30,14 @@
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('visible', 'Visibility') }}
-                                <div class="custom-radio-btns mg-bm-xs">
-                                    @if ($category->visible == '1')
-                                        {{ Form::radio('visible', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
-                                    
-                                        {{ Form::radio('visible', '0', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
-                                    @else
-                                        {{ Form::radio('visible', '1', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
-                                        
-                                        {{ Form::radio('visible', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
-                                    @endif  
-                                </div>
-                            </div>  
-
-                            <div class="form-group">
-                                {{ Form::label('desc', 'Content') }}
-                                {{ Form::textarea('desc', $category->desc, array('class' => 'form-control')) }}
-                            </div>
-                            
-                            <div class="form-group">
-                                {{ Form::label('image', 'Image') }}
-                                {{ Form::file('categoryimage') }}
+                                {{ Form::label('code', 'Code') }}
+                                {{ Form::text('code', null, array('class' => 'form-control')) }}
                             </div>
 
-                            @if ($category->category_image != "")
-                                <img src="/uploads/{{$category->category_image}}" width="100px">
-                            @endif
+                            <div class="form-group">
+                                {{ Form::label('value', 'Value') }}
+                                {{ Form::text('value', null, array('class' => 'form-control')) }}
+                            </div>
 
                         </div>
 

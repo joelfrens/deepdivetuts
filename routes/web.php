@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function
     // Subscription Routes
     Route::resource('/subscriptions', 'admin\SubscriptionController');
     Route::resource('/pages', 'admin\PageController');
+    Route::resource('/settings', 'admin\SettingsController');
     
 });
 
