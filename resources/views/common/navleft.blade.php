@@ -236,6 +236,26 @@
 					</li>
 				</ul>
 			</li>
+			<li class="nav-left-item">
+				<a class="no-link main-link" href="{{ url('/logout') }}">
+					<span class="nav-left-icon inline-block">
+						<i class="fa fa-arrow-left" aria-hidden="true"></i>
+					</span>
+					<span class="inline-block nav-left-text">
+						Back to Site
+					</span>
+				</a>
+			</li>
+			<li class="nav-left-item">
+				<a class="no-link main-link" href="{{ url('/logout') }}">
+					<span class="nav-left-icon inline-block">
+						<i class="fa fa-sign-out" aria-hidden="true"></i>
+					</span>
+					<span class="inline-block nav-left-text">
+						Log Out
+					</span>
+				</a>
+			</li>
 		</ul>
 	</nav>
 </div>

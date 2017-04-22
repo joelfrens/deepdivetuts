@@ -17,7 +17,9 @@ module.exports = function(grunt) {
                 files: [
                     'public/assets/src/less/libs/bootstrap-3.3.7/less/*.less',
                     'public/assets/src/less/theme/**/*.less',
-                    'public/assets/src/less/theme/*.less'
+                    'public/assets/src/less/theme/*.less',
+                    'public/assets/src/less/web/**/*.less',
+                    'public/assets/src/less/web/*.less'
                 ],
                 tasks: [
                     'less:style'
@@ -31,7 +33,8 @@ module.exports = function(grunt) {
                 ],
                 tasks: [
                     'uglify:build_head',
-                    'uglify:build_foot'
+                    'uglify:build_foot',
+                    'uglify:build_foot_web'
                 ]
             },
             livereload: {
@@ -55,6 +58,20 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'public/assets/build/css/app.css': 'public/assets/src/less/theme/app.less'
+                }
+            },
+            web: {
+                options: {
+                    sourceMap: true,
+                    sourceMapFilename: 'assets/build/css/front.less.map',
+                    sourceMapURL: 'front.less.map',
+                    // base path for the path set in the map file
+                    sourceMapBasepath: 'assets',
+                    // root path for the path set in the map file which will be used with base path
+                    sourceMapRootpath: '/'
+                },
+                files: {
+                    'public/assets/build/css/front.css': 'public/assets/src/less/web/front.less'
                 }
             }
         },
@@ -99,6 +116,27 @@ module.exports = function(grunt) {
                     'public/assets/src/js/theme/dashboard.js'
                 ],
                 dest: 'public/assets/build/js/app_foot.min.js',
+            },
+            build_foot_web: {
+                options: {
+                    sourceMap: true,
+                    sourceMapFilename: 'assets/build/js/app_foot_web.min.js.map',
+                    sourceMapURL: 'app_foot_web.min.js.map',
+                    sourceMapBasepath: 'assets',
+                    sourceMapRootpath: '/'
+                },
+                src: [
+                    // Include js libs
+                    'public/assets/src/js/libs/jquery/jquery-3.1.1.min.js',
+                    'public/assets/src/js/libs/moment.js',
+                    'public/assets/src/js/libs/charts.min.js',
+
+                    // Bootstrap files
+                    'public/assets/src/js/libs/bootstrap-3.3.7/js/dropdown.js',
+                    'public/assets/src/js/libs/bootstrap-3.3.7/js/collapse.js'
+
+                ],
+                dest: 'public/assets/build/js/app_foot_web.min.js'
             },
         }
 
