@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="breadcrumb">
-                        Add Subscription/Package
-                        <a class="no-link disp-link" href="{{ url('admin/subscriptions') }}">
+                        Add Menu Link
+                        <a class="no-link disp-link" href="{{ url('admin/menus') }}">
                             <i class="fa fa-list icon-disp-link" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -19,49 +19,46 @@
                 <div class="col-xs-12">
                     <div class="content">
 
-                    <h1>Edit {{ $category->name }}</h1>
+                    <h1>Edit {{ $menu->name }}</h1>
 
-                    {{ Form::model($category, array('route' => array('categories.update', $category->id), 'method' => 'PUT', 'files' => true)) }}
+                    {{ Form::model($menu, array('route' => array('menus.update', $menu->id), 'method' => 'PUT', 'files' => true)) }}
 
                         <div class="form-group">
                             <div class="form-group">
                                 {{ Form::label('name', 'Name') }}
-                                {{ Form::text('name', null, array('class' => 'form-control')) }}
+                                {{ Form::text('title', null, array('class' => 'form-control')) }}
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('visible', 'Visibility') }}
+                                {{ Form::label('link', 'Link') }}
+                                {{ Form::text('link', null, array('class' => 'form-control')) }}
+                            </div>
+                            
+                            <div class="form-group">
+                                {!! Form::label('Parent', 'Parent Menu') !!}
+                                {!! Form::select('parent', $parentMenus, $menu['parent'], ['class' => 'dropdown form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('Status', 'Status') }}
                                 <div class="custom-radio-btns mg-bm-xs">
-                                    @if ($category->visible == '1')
-                                        {{ Form::radio('visible', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
+                                    @if ($menu->value == '1')
+                                        {{ Form::radio('active', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
                                         {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
                                     
-                                        {{ Form::radio('visible', '0', false, ['class' => 'radio-custom']) }} 
+                                        {{ Form::radio('active', '0', false, ['class' => 'radio-custom']) }} 
                                         {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
                                     @else
-                                        {{ Form::radio('visible', '1', false, ['class' => 'radio-custom']) }} 
+                                        {{ Form::radio('active', '1', false, ['class' => 'radio-custom']) }} 
                                         {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
                                         
-                                        {{ Form::radio('visible', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
+                                        {{ Form::radio('active', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
                                         {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
                                     @endif  
                                 </div>
                             </div>  
 
-                            <div class="form-group">
-                                {{ Form::label('desc', 'Content') }}
-                                {{ Form::textarea('desc', $category->desc, array('class' => 'form-control')) }}
-                            </div>
                             
-                            <div class="form-group">
-                                {{ Form::label('image', 'Image') }}
-                                {{ Form::file('categoryimage') }}
-                            </div>
-
-                            @if ($category->category_image != "")
-                                <img src="/uploads/{{$category->category_image}}" width="100px">
-                            @endif
-
                         </div>
 
                         {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}

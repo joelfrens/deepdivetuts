@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="breadcrumb">
-                        Add Category
-                        <a class="no-link disp-link" href="{{ url('admin/categories') }}">
+                        Add Menu Link
+                        <a class="no-link disp-link" href="{{ url('admin/menus') }}">
                             <i class="fa fa-list icon-disp-link" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -29,31 +29,31 @@
                             </div>
                         @endif
 
-                        {{ Form::open(array('url' => 'admin/categories', 'files' => true)) }}
+                        {{ Form::open(array('url' => 'admin/menus', 'files' => true)) }}
                         <div class="form-group">
-                            {{ Form::label('name', 'Name') }}
-                            {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+                            {{ Form::label('title', 'Title') }}
+                            {{ Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('visible', 'Visibility') }}
+                            {{ Form::label('link', 'Link') }}
+                            {{ Form::text('link', Input::old('link'), array('class' => 'form-control')) }}
+                        </div>
+                        
+                        <div class="form-group">
+                            {!! Form::label('Parent', 'Parent Menu') !!}
+                            {!! Form::select('parent', $parentMenus, null, ['class' => 'dropdown form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('active', 'Status') }}
                             <div class="custom-radio-btns mg-bm-xs">
-                                {{ Form::radio('visible', '1', '', ['class' => 'radio-custom', 'id' => 'visible-yes']) }}
-                                {{ Form::label('visible-yes', 'Yes', ['class' => 'radio-custom-label']) }}
+                                {{ Form::radio('active', '1', '', ['class' => 'radio-custom', 'id' => 'active-yes']) }}
+                                {{ Form::label('active-yes', 'Yes', ['class' => 'radio-custom-label']) }}
 
-                                {{ Form::radio('visible', '0', true, ['class' => 'radio-custom', 'id' => 'visible-no']) }}
-                                {{ Form::label('visible-no', 'No', ['class' => 'radio-custom-label']) }}
+                                {{ Form::radio('active', '0', true, ['class' => 'radio-custom', 'id' => 'active-no']) }}
+                                {{ Form::label('active-no', 'No', ['class' => 'radio-custom-label']) }}
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ Form::label('description', 'Description') }}
-                            {{ Form::textarea('desc', '', array('class' => 'form-control')) }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ Form::label('image', 'Image') }}
-                            {{ Form::file('categoryimage') }}
                         </div>
 
                         {{ Form::submit('Submit', array('class' => 'btn btn-primary')) }}

@@ -19,7 +19,7 @@
             <div class="col-xs-12">
                 <div class="table-list">
                     <div class="pagination-container">
-                        {{ $categories->links() }}
+                        {{ $menus->links() }}
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -29,7 +29,9 @@
                                     <input type="checkbox" class="table-list-check-all" />
                                 </th>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Link</th>
+                                <th>Status</th>
                                 <th>
                                     <i class="fa fa-trash-o table-del-ic" aria-hidden="true"></i>
                                     <!-- {{ Form::open(array('url' => 'admin/categories/', 'class' => 'btn btn-small')) }}
@@ -40,15 +42,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $key => $value)
+                            @foreach($menus as $key => $value)
                                 <tr>
                                     <td>
                                         <input type="checkbox" class="table-list-check" />
                                     </td>
                                     <td>{{ $value->id }}</td>
-                                    <td>{{ $value->name }}</td>
+                                    <td>{{ $value->title }}</td>
+                                    <td>{{ $value->link }}</td>
+                                    <td>{{ $value->active }}</td>
                                     <td>
-                                        <a href="{{ URL::to('admin/categories/' . $value->id . '/edit') }}">
+                                        <a href="{{ URL::to('admin/menus/' . $value->id . '/edit') }}">
                                             <i class="fa fa-pencil table-edit-ic" aria-hidden="true"></i>
                                         </a>
                                     </td>
@@ -58,7 +62,7 @@
                         </table>
                     </div>
                     <div class="pagination-container">
-                        {{ $categories->links() }}
+                        {{ $menus->links() }}
                     </div>
                 </div>
             </div>

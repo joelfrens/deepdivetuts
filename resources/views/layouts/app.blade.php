@@ -43,7 +43,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu nav-top-drop" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Settings</a></li>
+                        <li><a href="/admin/settings">Settings</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="{{ url('/logout') }}"

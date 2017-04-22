@@ -20,11 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/admin/home', 'HomeController@index');
 
 Route::get('/test', 'CategoryController@index');
 
 Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function () {
+    
     Route::resource('/categories', 'admin\CategoryController');
     Route::resource('/articles', 'admin\ArticleController');
     //API Route
@@ -36,12 +37,12 @@ Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function
     Route::get('/tag/edit/{id}', ['as' => 'tag.edit','uses' => 'admin\TagController@edit']);
     Route::PATCH('/tag/update/{id}', ['as' => 'tag.update', 'uses' => 'admin\TagController@update']);
     Route::delete('/tag/{tag}', 'admin\TagController@destroy');
-
     
     // Subscription Routes
     Route::resource('/subscriptions', 'admin\SubscriptionController');
     Route::resource('/pages', 'admin\PageController');
     Route::resource('/settings', 'admin\SettingsController');
+    Route::resource('/menus', 'admin\MenuController');
     
 });
 

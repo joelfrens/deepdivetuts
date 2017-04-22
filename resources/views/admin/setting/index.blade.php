@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumb">
-                    Categories
+                    Settings
                     <a class="no-link disp-link" href="{{ url('admin/settings/create') }}">
                         <i class="fa fa-plus icon-disp-link" aria-hidden="true"></i>
                     </a>

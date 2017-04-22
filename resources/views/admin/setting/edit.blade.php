@@ -19,9 +19,9 @@
                 <div class="col-xs-12">
                     <div class="content">
 
-                    <h1>Edit {{ $category->name }}</h1>
+                    <h1>Edit {{ $setting->name }}</h1>
 
-                    {{ Form::model($category, array('route' => array('categories.update', $category->id), 'method' => 'PUT', 'files' => true)) }}
+                    {{ Form::model($setting, array('route' => array('settings.update', $setting->id), 'method' => 'PUT', 'files' => true)) }}
 
                         <div class="form-group">
                             <div class="form-group">
