@@ -55,6 +55,14 @@
                                         <a href="{{ URL::to('admin/users/' . $value->id . '/edit') }}">
                                             <i class="fa fa-pencil table-edit-ic" aria-hidden="true"></i>
                                         </a>
+                                        <form action="/admin/users/{{ $value->id }}" method="POST" class="inline-block">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+
+                                            <button type="submit" class="btn btn-trans">
+                                                <i class="fa fa-times table-row-del" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

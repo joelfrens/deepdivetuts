@@ -23,7 +23,7 @@ class Article extends Model
     }
 
     protected $fillable = [
-    	'title', 'content', 'active', 'scheduled_on', 'xcoordinate', 'ycoordinate', 'category_id', 'meta_keywords', 'image'
+    	'title', 'content', 'active', 'scheduled_on', 'category_id', 'meta_keywords', 'image'
     ];
 
     public function user()
