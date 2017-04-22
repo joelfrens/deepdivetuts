@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('visible', 'Visibility') }}
+                            {{ Form::label('status', 'Status') }}
                             <div class="custom-radio-btns mg-bm-xs">
                                 {{ Form::radio('visible', '1', '', ['class' => 'radio-custom', 'id' => 'visible-yes']) }}
                                 {{ Form::label('visible-yes', 'Yes', ['class' => 'radio-custom-label']) }}

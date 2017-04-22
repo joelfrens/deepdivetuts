@@ -33,7 +33,7 @@
         @if (!Auth::guest())
         <div class="nav-top-wrapper">
             <div class="nav-top-left">
-                <i class="fa fa-envira logo-img" aria-hidden="true"></i>
+                <span style="color:#00838F;font-size:25px">&nbsp;<i class="fa fa-anchor" aria-hidden="true"></i>&nbsp;DeepDiveCMS</span>
             </div>
             <div class="nav-top-right">
                 <div class="dropdown">
@@ -43,13 +43,13 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu nav-top-drop" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Settings</a></li>
+                        <li><a href="/admin/settings"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Settings</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="{{ url('/logout') }}"
                                 onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
-                                Logout
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout
                             </a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}

@@ -1,75 +1,117 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page-content">
+    <div class="page-content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="breadcrumb">
-                        Add Subscription/Package
-                        <a class="no-link disp-link" href="{{ url('admin/subscriptions') }}">
+                        Edit Page
+                        <a class="no-link disp-link" href="{{ url('admin/pages') }}">
                             <i class="fa fa-list icon-disp-link" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="content">
+                        @include('common.errors')
 
-                    <h1>Edit {{ $category->name }}</h1>
+                          <div class="flash-message">
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                              @if(Session::has('alert-' . $msg))
 
-                    {{ Form::model($category, array('route' => array('categories.update', $category->id), 'method' => 'PUT', 'files' => true)) }}
+                              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                              @endif
+                            @endforeach
+                          </div> <!-- end .flash-message -->
+                        <!-- Edit page Form -->
+                            {!! Form::model($page, [
+                                'method' => 'PATCH',
+                                'files' => true,
+                                'route' => ['pages.update', $page->id]
+                            ]) !!}
 
-                        <div class="form-group">
+                            {{ csrf_field() }}
+
                             <div class="form-group">
-                                {{ Form::label('name', 'Name') }}
-                                {{ Form::text('name', null, array('class' => 'form-control')) }}
+                                {!! Form::label('page-name', 'Page Title:', ['class' => 'control-label']) !!}
+                                {!! Form::text('title', null, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('visible', 'Visibility') }}
-                                <div class="custom-radio-btns mg-bm-xs">
-                                    @if ($category->visible == '1')
-                                        {{ Form::radio('visible', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
-                                    
-                                        {{ Form::radio('visible', '0', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
-                                    @else
-                                        {{ Form::radio('visible', '1', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
-                                        
-                                        {{ Form::radio('visible', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
-                                    @endif  
-                                </div>
-                            </div>  
+                                {!! Form::label('Description', 'Description:', ['class' => 'control-label']) !!}
+                                {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => 'tinymce']) !!}
+                            </div>
 
                             <div class="form-group">
-                                {{ Form::label('desc', 'Content') }}
-                                {{ Form::textarea('desc', $category->desc, array('class' => 'form-control')) }}
+                                {!! Form::label('meta_keywords', 'Meta Keywords', ['class' => 'control-label']) !!}
+                                {!! Form::text('meta_keywords', null, ['class' => 'form-control']) !!}
                             </div>
                             
                             <div class="form-group">
-                                {{ Form::label('image', 'Image') }}
-                                {{ Form::file('categoryimage') }}
+                                {!! Form::label('meta_description', 'Meta Description', ['class' => 'control-label']) !!}
+                                {!! Form::text('meta_description', null, ['class' => 'form-control']) !!}
                             </div>
 
-                            @if ($category->category_image != "")
-                                <img src="/uploads/{{$category->category_image}}" width="100px">
-                            @endif
+                            <div class="form-group">
+                                {!! Form::label('schedule_on', 'Scheduled On') !!}
+                                {!! Form::date('schedule_on', null, ['class' => 'form-control']) !!}
+                            </div>
 
-                        </div>
+                            <div class="form-group">
+                                {!! Form::label('start_date', 'Start Date') !!}
+                                {!! Form::date('start_date', null, ['class' => 'form-control']) !!}
+                            </div>
 
-                        {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
+                            <div class="form-group">
+                                {!! Form::label('end_date', 'End Date') !!}
+                                {!! Form::date('end_date', null, ['class' => 'form-control']) !!}
+                            </div>
+                            
+                            <div class="form-group">
+                                {{ Form::label('status', 'Status') }}
 
-                        {{ Form::close() }}
+                                <div class="custom-radio-btns mg-bm-xs">
+                                    @if ($page->active == '1')
+                                        {{ Form::radio('active', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
+                                        <label for="status" class="radio-custom-label">Yes</label>
+                                        {{ Form::radio('active', '0', false, ['class' => 'radio-custom']) }} 
+                                        <label for="status" class="radio-custom-label">No</label>
+                                    @else
+                                        {{ Form::radio('active', '1', false, ['class' => 'radio-custom']) }} 
+                                        <label for="status" class="radio-custom-label">Yes</label>
+                                        {{ Form::radio('active', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }}
+                                        <label for="status" class="radio-custom-label">No</label>
+                                    @endif    
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @if ($page->image != "")
+                                    {!! Html::image('uploads/'.$page->image, 'alt', array( 'width' => 70, 'height' => '' )) !!}
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('Featured Image ') !!}
+                                {!! Form::file('image') !!}
+                            </div>
+
+                            {!! Form::submit('Update Page', ['class' => 'btn btn-primary']) !!}
+
+                            {!! Form::close() !!}
+                        </form>
+                    </div>
                 </div>
+
+                
             </div>
         </div>
     </div>
-</div>
 @endsection

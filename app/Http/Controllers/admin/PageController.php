@@ -116,7 +116,7 @@ class PageController extends Controller
         $destinationPath = 'uploads';
         $filename = '';
 
-        $file = Input::file('featuredimage');
+        $file = Input::file('image');
             
         $rules = array('file' => 'required');
         $validator = Validator::make(array('file' => $file), $rules);
@@ -153,6 +153,26 @@ class PageController extends Controller
 
         // Get article details based on the Id
         $page = \App\Page::findORFail($id);
+
+        //dd($page);
+
+        if ($page->start_date != null)
+        {
+            $sdate = explode(" ", $page->start_date);
+            $page->start_date = $sdate[0];
+        }
+
+        if ($page->end_date != null)
+        {
+            $edate = explode(" ", $page->end_date);
+            $page->end_date = $edate[0];
+        }
+
+        if ($page->end_date != null)
+        {
+            $scheduledate = explode(" ", $page->schedule_on);
+            $page->schedule_on = $scheduledate[0];
+        }
 
         return view('admin.page.edit')
                     ->with('page',$page);
@@ -220,7 +240,7 @@ class PageController extends Controller
         //get image
         $destinationPath = 'uploads';
         $filename = '';
-        $file = Input::file('featuredimage');
+        $file = Input::file('image');
         
         $rules = array('file' => 'required');
         $validator = Validator::make(array('file' => $file), $rules);

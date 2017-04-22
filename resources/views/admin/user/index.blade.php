@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="breadcrumb">
-                    Categories
-                    <a class="no-link disp-link" href="{{ url('admin/categories/create') }}">
+                    Users
+                    <a class="no-link disp-link" href="{{ url('admin/users/create') }}">
                         <i class="fa fa-plus icon-disp-link" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -19,7 +19,7 @@
             <div class="col-xs-12">
                 <div class="table-list">
                     <div class="pagination-container">
-                        {{ $menus->links() }}
+                        {{ $users->links() }}
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -29,8 +29,8 @@
                                     <input type="checkbox" class="table-list-check-all" />
                                 </th>
                                 <th>ID</th>
-                                <th>Title</th>
-                                <th>Link</th>
+                                <th>Name</th>
+                                <th>Email</th>
                                 <th>Status</th>
                                 <th>
                                     <i class="fa fa-trash-o table-del-ic" aria-hidden="true"></i>
@@ -42,17 +42,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($menus as $key => $value)
+                            @foreach($users as $key => $value)
                                 <tr>
                                     <td>
                                         <input type="checkbox" class="table-list-check" />
                                     </td>
                                     <td>{{ $value->id }}</td>
-                                    <td>{{ $value->title }}</td>
-                                    <td>{{ $value->link }}</td>
-                                    <td>{{ $value->active }}</td>
+                                    <td>{{ $value->name }}</td>
+                                    <td>{{ $value->email }}</td>
+                                    <td>{{ $value->status }}</td>
                                     <td>
-                                        <a href="{{ URL::to('admin/menus/' . $value->id . '/edit') }}">
+                                        <a href="{{ URL::to('admin/users/' . $value->id . '/edit') }}">
                                             <i class="fa fa-pencil table-edit-ic" aria-hidden="true"></i>
                                         </a>
                                     </td>
@@ -62,7 +62,7 @@
                         </table>
                     </div>
                     <div class="pagination-container">
-                        {{ $menus->links() }}
+                        {{ $users->links() }}
                     </div>
                 </div>
             </div>

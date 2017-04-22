@@ -9,10 +9,12 @@ use App\Page;
 use DB, Session, Crypt, Hash;
 use App\Category;
 use App\Setting;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use Validator;
 
-class SettingsController extends Controller
+
+class UserController extends Controller
 {
     /**
      * SettingController constructor.
@@ -30,19 +32,19 @@ class SettingsController extends Controller
     public function index()
     {
         // get all the settings
-        $settings = DB::table('settings')->paginate(15);
+        $users = DB::table('users')->paginate(15);
         // load the view and pass the settings
-        return view('admin.setting.index', ['settings' => $settings]);
+        return view('admin.user.index', ['users' => $users]);
     }
 
     public function show()
     {
         // get all the settings
-        $settings = DB::table('settings')->paginate(15);
+        $users = DB::table('users')->paginate(15);
 
         // load the view and pass the settings
         //return view('admin.category.index', ['settings' => $settings]);
-        return $settings;
+        return $users;
         exit;
     }
 
@@ -53,7 +55,7 @@ class SettingsController extends Controller
      */
     public function create()
     {
-        return view('admin.setting.create');
+        return view('admin.user.create');
     }
 
     /**
@@ -66,9 +68,9 @@ class SettingsController extends Controller
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
-            'name'       => 'required',
-            'code'       => 'required',
-            'value'       => 'required'
+            'name'       => 'required|max:255',
+            'email'       => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -78,22 +80,23 @@ class SettingsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('admin/settings/create')
+            return redirect('admin/users/create')
                         ->withErrors($validator)
                         ->withInput();
         } else {
             // store
-            $setting = new Setting;
-            $setting->name       = Input::get('name');
-            $setting->code       = Input::get('code');
-            $setting->value       = Input::get('value');
-            $setting->type = '';
+            $user = new User;
+            $user->name = Input::get('name');
+            $user->email = Input::get('email');
+            $user->password = bcrypt(Input::get('password'));
+            $user->status = Input::get('status');
+            $user->type = '';
 
-            $setting->save();
+            $user->save();
 
             // redirect
-            Session::flash('message', 'Successfully created Setting!');
-            return redirect('admin/settings');
+            Session::flash('message', 'Successfully created User!');
+            return redirect('admin/users');
             
         }
     }
@@ -107,10 +110,10 @@ class SettingsController extends Controller
     public function edit($id)
     {
         // get the category
-        $setting = Setting::find($id);
+        $user = User::find($id);
         // show the edit form and pass the category
-        return view('admin.setting.edit')
-            ->with('setting', $setting);
+        return view('admin.user.edit')
+            ->with('user', $user);
     }
 
     /**
@@ -124,35 +127,36 @@ class SettingsController extends Controller
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
-            'name'       => 'required',
-            'code'       => 'required',
-            'value'       => 'required'
+            'name'       => 'required|max:255',
+            'email'       => 'required|email|max:255'
         );
         $validator = Validator::make(Input::all(), $rules);
-
-
-        $this->validate($request, [
+		
+		$this->validate($request, [
             'name' => 'required'
         ]);
 
         if ($validator->fails()) {
-            return redirect('admin/settings/create')
+            return redirect('admin/users/create')
                         ->withErrors($validator)
                         ->withInput();
         } else {
             // store
-            $setting = Setting::find($id);
-            $setting->name       = Input::get('name');
-            $setting->code       = Input::get('code');
-            $setting->value       = Input::get('value');
-            $setting->type = '';
+            $user = User::find($id);
+            $user->name = Input::get('name');
+            $user->email = Input::get('email');
+            if (Input::get('password') != ""){
+            	$user->password = bcrypt(Input::get('password'));
+            }
+            
+            $user->status = Input::get('status');
             //get image
             
-            $setting->save();
+            $user->save();
 
             // redirect
-            Session::flash('message', 'Successfully updated setting!');
-            return redirect('admin/settings');
+            Session::flash('message', 'Successfully updated User!');
+            return redirect('admin/users');
             
         }
     }
@@ -166,11 +170,11 @@ class SettingsController extends Controller
     public function destroy($id)
     {
         // delete
-        $setting = Setting::find($id);
-        $setting->delete();
+        $user = Setting::find($id);
+        $user->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the setting!');
-        return redirect('admin/settings')->with('status', 'Setting Deleted!');
+        Session::flash('message', 'Successfully deleted the user!');
+        return redirect('admin/users')->with('status', 'User Deleted!');
     }
 }
