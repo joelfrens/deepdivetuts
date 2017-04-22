@@ -1,0 +1,154 @@
+/* ============================================ *
+ * Header
+ *
+ *
+ * ============================================ */
+
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+
+.counter-box {
+	display: inline-block;
+    background-color: @dash-count-bg-color;
+    border: 1px solid @theme-white;
+    padding: 8px;
+    text-align: center;
+    .count {
+    	font-size: 18px;
+    }
+}
+.software-info {
+	background-color: @theme-white;
+	padding: 10px;
+	font-size: 10px;
+	.fa-envelope {
+		font-size: 9px;
+	}
+}
+
+.circular-box {
+	background-color: @theme-white;
+	padding: 10px;
+}
+
+.info-panel {
+	border-radius: 0;
+    border: 0;
+    margin-bottom: 10px;
+	.info-head {
+		padding: 8px 12px;
+		background-color: @dash-info-bg-color;
+		border-radius: 0;
+		border: 0;
+	}
+	.info-title {
+		font-size: 15px;
+	}
+	.info-body {
+		padding: 5px 12px;
+		height: 150px;
+		overflow-y: auto;
+	}
+	.info-row {
+		padding: 5px 0;
+	}
+	.info-row:nth-of-type(odd) {
+		background-color: @dash-info-alt-bgcolor;
+	}
+}
+
+.list-panel {
+	border-radius: 0;
+    border: 0;
+    margin-bottom: 10px;
+	.list-head {
+		padding: 0 12px;
+		background-color: @theme-white;
+		border-radius: 0;
+		border: 0;
+		.inner-head {
+			padding: 8px 0;
+			border-bottom: 1px solid @theme-primary;
+		}
+	}
+	.list-title {
+		font-size: 15px;
+	}
+	.list-body {
+		padding: 5px 12px;
+		height: 200px;
+		overflow-y: auto;
+	}
+	.list-row {
+		padding: 5px 0;
+		border-bottom: 1px solid @dash-list-sep-color;
+		.clearfix();
+	}
+	.list-action-appr {
+		padding: 0 3px;
+	}
+	.list-action-dec {
+		padding: 0 5px;
+	}
+	.fa-check {
+		color: @theme-white;
+	}
+	.list-action-box {
+		display: inline-block;
+		float: right;
+	}
+	.fa-times {
+		font-size: 15px;
+	}
+}
+
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+
+
+// *** Mobile devices only (less than 480px) *** //
+@media (max-width: (@screen-phone - 1)) {
+
+}
+
+// *** Mobile & tablet devices only (less than 600px) *** //
+@media (max-width: @screen-xs-max) {
+}
+
+// *** Mobile & tablet devices only (less than 770px) *** //
+@media (max-width: @screen-sm-max) {
+}
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+	.circular-box {
+		min-height: 335px;
+	}
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

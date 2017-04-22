@@ -1,0 +1,117 @@
+/* ============================================ *
+ * Name
+ *
+ *
+ * ============================================ */
+
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+
+body {
+	font-family: @font-family;
+	letter-spacing: @letter-spacing;
+	margin: 0;
+	padding: 0;
+	color: @theme-main;
+	font-size: @font-small;
+	background-color: @theme-body-bg;
+}
+
+.border-all {
+	border: 1px solid red;
+}
+
+.page-content {
+	width: auto;
+	position: relative;
+}
+
+.page-header {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/** Bootstrap overides **/
+.dropdown-menu {
+	border: none;
+	border-radius: 0;
+}
+
+.page-wrapper {
+	.clearfix();
+}
+
+.content {
+	width: 60%;
+	vertical-align: top;
+	background-color: yellow;
+	min-height: 600px;
+	float: left;
+}
+
+.side-panel {
+	width: 20%;
+	vertical-align: top;
+	background-color: teal;
+	min-height: 600px;
+}
+
+/** Bootstrap overides **/
+
+a {
+	color: @anchor-color;
+	&:hover {
+		color: @anchor-hover-color;
+		text-decoration: none;
+	}
+}
+
+// *** Mobile devices only (less than 480px) *** //
+@media (max-width: (@screen-phone - 1)) {
+
+}
+
+// *** Mobile & tablet devices only (less than 600px) *** //
+@media (max-width: @screen-xs-max) {
+}
+
+// *** Mobile & tablet devices only (less than 770px) *** //
+@media (max-width: @screen-sm-max) {
+
+}
+
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

@@ -88,10 +88,15 @@ module.exports = function(grunt) {
                     'public/assets/src/js/libs/jquery/jquery-3.1.1.min.js',
                     'public/assets/src/js/libs/bootstrap-3.3.7/js/dropdown.js',
                     'public/assets/src/js/libs/bootstrap-3.3.7/js/collapse.js',
-
+                    'public/assets/src/js/libs/moment.js',
+                    'public/assets/src/js/libs/charts.min.js',
+                    
                     //theme files
                     'public/assets/src/js/theme/accordion.js',
-                    'public/assets/src/js/theme/list.js'
+                    'public/assets/src/js/theme/list.js',
+                    //theme files
+
+                    'public/assets/src/js/theme/dashboard.js'
                 ],
                 dest: 'public/assets/build/js/app_foot.min.js',
             },

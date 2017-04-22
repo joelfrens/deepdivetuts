@@ -1,0 +1,175 @@
+/* ============================================ *
+* Theme: typography
+*
+*
+* ============================================ */
+
+.font-smoothing {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.font-smoothing-off {
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: auto;
+}
+
+body{
+	.font-smoothing;
+	font-weight: @font-regular;
+	color: @theme-main;
+	font-family: @font-family;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+b, strong {
+	font-weight: @font-bold;
+}
+
+ul, ol {
+	margin: 0;
+	padding: 0;
+}
+
+// *** Headings *** //
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	margin-top: 0;
+	margin-bottom: 0.7em;
+	line-height: 1.3em;
+	a {
+		color: inherit;
+	}
+}
+
+h1, .h1 {
+	font-size: 35px
+}
+
+h2, .h2 {
+	font-size: 28px
+}
+
+h3, .h3 {
+	font-size: 26px
+}
+
+h4, .h4 {
+	font-size: 20px
+}
+
+h5, .h5 {
+	font-size: 16px
+}
+
+h6, .h6 {
+	font-size: 14px
+}
+
+// *** Lists *** //
+.no-bullets {
+	list-style: none;
+}
+
+.no-spacing {
+	letter-spacing: normal;
+}
+
+// font styles
+.text-underline {
+	text-decoration: underline;
+}
+.text-bold {
+	font-weight: bold;
+}
+
+.font-light {
+	font-weight: @font-light;
+}
+.font-regular {
+	font-weight: @font-regular;
+}
+.font-medium {
+	font-weight: @font-medium;
+}
+.font-bold {
+	font-weight: @font-bold;
+}
+.font-extrabold {
+	font-weight: @font-extrabold;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.fullwidth {
+	width: 100%;
+}
+
+.no-link {
+	color: @theme-main;
+	&:hover {
+		color: @theme-main;
+	}
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.vhidden {
+	visibility: hidden;
+}
+
+.vvisible {
+	visibility: visible;
+}
+
+.ohidden {
+	opacity: 0;
+	.transition(0.3s);
+}
+
+.ovisible {
+	opacity: 1;
+	.transition(0.3s);
+}
+
+.theme-box-shadow {
+	.box-shadow(0px 0px 17px -6px @theme-shadow-color);
+}
+
+.no-border {
+	border: 0;
+}
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}
