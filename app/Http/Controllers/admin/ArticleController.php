@@ -123,8 +123,6 @@ class ArticleController extends Controller
         $article = $request->user()->article()->create([
             'title' => $request->title,
             'content' => $request->content,
-            'xcoordinate' => $request->xcoordinates,
-            'ycoordinate' => $request->ycoordinates,
             'category_id' => $request->category,
             'active' => $request->status,
             'meta_keywords' => 'test',
@@ -227,8 +225,6 @@ class ArticleController extends Controller
           ->update([
                 'title' => $request->title,
                 'content' => $request->content,
-                'xcoordinate' => $request->xcoordinates,
-                'ycoordinate' => $request->ycoordinates,
                 'category_id' => $request->category_id,
                 'active' => $request->status,
                 'meta_keywords' => 'test'

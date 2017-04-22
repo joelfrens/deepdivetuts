@@ -19,16 +19,15 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="content">
-                        @include('common.errors')
-
-                        <div class="flash-message">
-                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                              @if(Session::has('alert-' . $msg))
-
-                              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                              @endif
-                            @endforeach
-                        </div> <!-- end .flash-message -->
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         {{ Form::open(array('url' => '/admin/articles', 'files' => true)) }}
                         
@@ -43,7 +42,7 @@
                             {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => '8', 'placeholder' => 'Description']) !!}
                         </div>
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             {!! Form::label('Coordinates', 'X-Coordinate:') !!}
                             {!! Form::text('xcoordinates', null, ['class' => 'form-control', 'placeholder' => 'X-Coordinate']) !!}
                         </div>
@@ -51,7 +50,7 @@
                         <div class="form-group">
                             {!! Form::label('Coordinates', 'Y-Coordinate:') !!}
                             {!! Form::text('ycoordinates', null, ['class' => 'form-control', 'placeholder' => 'Y-Coordinate']) !!}
-                        </div>
+                        </div>-->
 
                         <div class="form-group">
                             {!! Form::label('Category', 'Category:') !!}

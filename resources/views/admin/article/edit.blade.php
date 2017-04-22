@@ -49,7 +49,7 @@
 							    {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => 'tinymce']) !!}
 							</div>
 
-							<div class="form-group">
+							<!--<div class="form-group">
 								{!! Form::label('Coordinates', 'X-Coordinate:', ['class' => 'control-label']) !!}
 							    {!! Form::text('xcoordinates', null, ['class' => 'form-control']) !!}
 							</div>
@@ -57,7 +57,7 @@
 							<div class="form-group">
 								{!! Form::label('Coordinates', 'Y-Coordinate:', ['class' => 'control-label']) !!}
 							    {!! Form::text('ycoordinates', null, ['class' => 'form-control']) !!}
-							</div>
+							</div>-->
 							
 							<div class="form-group">
 								{!! Form::label('Category', 'Category: ', ['class' => 'control-label']) !!}
@@ -79,11 +79,10 @@
 
 								<div class="custom-radio-btns mg-bm-xs">
 					                @if ($article->active == '1')
-					                    
-						                    {{ Form::radio('status', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-						                    <label for="status" class="radio-custom-label">Yes</label>
-						                    {{ Form::radio('status', '0', false, ['class' => 'radio-custom']) }} 
-						                    <label for="status" class="radio-custom-label">No</label>
+				                        {{ Form::radio('status', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
+					                    <label for="status" class="radio-custom-label">Yes</label>
+					                    {{ Form::radio('status', '0', false, ['class' => 'radio-custom']) }} 
+					                    <label for="status" class="radio-custom-label">No</label>
 					                @else
 					                    {{ Form::radio('status', '1', false, ['class' => 'radio-custom']) }} 
 					                    <label for="status" class="radio-custom-label">Yes</label>
