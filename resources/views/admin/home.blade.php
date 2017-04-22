@@ -14,31 +14,34 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="counter-box mg-rt-sm">
-                        <h6 class="no-margin">Subscribers</h6>
+                        <h6 class="no-margin"><i class="fa fa-envelope-o" aria-hidden="true">&nbsp;</i>Subscribers</h6>
                         <div class="count">5</div>  
                     </div>
                     <div class="counter-box mg-rt-sm">
-                        <h6 class="no-margin">Total Visits</h6>
+                        <h6 class="no-margin"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Total Visits</h6>
                         <div class="count">1100</div>   
                     </div>
                     <div class="counter-box mg-rt-sm">
-                        <h6 class="no-margin">Users</h6>
+                        <h6 class="no-margin"><i class="fa fa-users fa-3" aria-hidden="true"></i>&nbsp;Users</h6>
                         <div class="count">20</div> 
                     </div>
                 </div>
             </div>
             <div class="row mg-tp-sm">
                 <div class="col-xs-12 col-md-4">
-                    <div class="circular-box">
-                        <canvas id="browserView" width="400" height="400"></canvas>
+                    <div class="panel panel-default info-panel">
+                        <div class="panel-heading info-head">
+                            <h3 class="panel-title info-title"><i class="fa fa-chrome" aria-hidden="true"></i>&nbsp;Browser Statistics</h3>
+                        </div>
+                        <div class="circular-box">
+                            <canvas id="browserView" width="400" height="400"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-5">
-                    <div class="panel panel-default list-panel">
-                        <div class="panel-heading list-head">
-                            <div class="inner-head">
-                                <h3 class="panel-title list-title">Comments</h3>
-                            </div>
+                    <div class="panel panel-default info-panel">
+                        <div class="panel-heading info-head">
+                            <h3 class="panel-title info-title"><i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;Recent Comments</h3>
                         </div>
                         <div class="panel-body list-body">
                             <div class="list-row">
@@ -71,7 +74,7 @@
                 <div class="col-xs-12 col-md-3">
                     <div class="panel panel-default info-panel">
                         <div class="panel-heading info-head">
-                            <h3 class="panel-title info-title">Users registered</h3>
+                            <h3 class="panel-title info-title"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Users registered</h3>
                         </div>
                         <div class="panel-body info-body">
                             <div class="info-row">
@@ -86,7 +89,7 @@
                     </div>
                     <div class="panel panel-default info-panel">
                         <div class="panel-heading info-head">
-                            <h3 class="panel-title info-title">Top 10 articles</h3>
+                            <h3 class="panel-title info-title"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Top 10 articles</h3>
                         </div>
                         <div class="panel-body info-body">
                             <div class="info-row">
@@ -123,7 +126,7 @@
                     </div>
                     <div class="panel panel-default info-panel">
                         <div class="panel-heading info-head">
-                            <h3 class="panel-title info-title">Recent Subscriptions</h3>
+                            <h3 class="panel-title info-title"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Recent Subscriptions</h3>
                         </div>
                         <div class="panel-body info-body">
                             <div class="info-row">
@@ -143,7 +146,8 @@
         <div class="software-info">
             <span>Software v1.0</span>&nbsp;&#124;
             <span><i class="fa fa-envelope" aria-hidden="true"></i> joelfrens@gmail.com</span>&nbsp;&#124;
-            <span><i class="fa fa-mobile" aria-hidden="true"></i> +447895632144&nbsp;</span>
+            <span><i class="fa fa-mobile" aria-hidden="true"></i> +447802795051&nbsp;</span>&nbsp;&#124;
+            <span><i class="fa fa-skype" aria-hidden="true"></i> joel.seby.fernandes&nbsp;</span>
         </div>
     </div>
 @endsection
