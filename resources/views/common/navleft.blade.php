@@ -237,7 +237,7 @@
 				</ul>
 			</li>
 			<li class="nav-left-item">
-				<a class="no-link main-link" href="{{ url('/logout') }}">
+				<a class="no-link main-link" target="_blank" href="{{ url('/') }}">
 					<span class="nav-left-icon inline-block">
 						<i class="fa fa-arrow-left" aria-hidden="true"></i>
 					</span>

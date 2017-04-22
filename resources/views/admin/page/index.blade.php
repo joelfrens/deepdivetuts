@@ -48,11 +48,19 @@
                                     </td>
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->title }}</td>
-                                    <td>{{ $value->content }}</td>
+                                    <td>{{ str_limit($value->content, $limit = 150, $end = '...') }}</td>
                                     <td>
                                         <a href="{{ URL::to('admin/pages/' . $value->id . '/edit') }}">
                                             <i class="fa fa-pencil table-edit-ic" aria-hidden="true"></i>
                                         </a>
+                                        <form action="/admin/pages/{{ $value->id }}" method="POST" class="inline-block">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+
+                                            <button type="submit" class="btn btn-trans">
+                                                <i class="fa fa-times table-row-del" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
