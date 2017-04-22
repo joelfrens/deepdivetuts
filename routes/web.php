@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function
     Route::resource('/pages', 'admin\PageController');
     Route::resource('/settings', 'admin\SettingsController');
     Route::resource('/menus', 'admin\MenuController');
+    Route::resource('/users', 'admin\UserController');
     
 });
 

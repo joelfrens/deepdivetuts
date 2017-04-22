@@ -207,6 +207,35 @@
 					</li>
 				</ul>
 			</li>
+			<li class="nav-left-item">
+				<a class="no-link main-link accordion-link" href="#users-block">
+					<span class="nav-left-icon inline-block">
+						<i class="fa fa-users" aria-hidden="true"></i>
+					</span>
+					<span class="inline-block nav-left-text">Users</span>
+					<span class="inline-block nav-left-chevron-wrapper">
+						<i class="fa fa-chevron-right nav-chevron-right" aria-hidden="true"></i>
+					</span>
+				</a>
+				<ul id="users-block" class="accordion-collapse">
+					<li class="nav-left-subitem">
+						<a class="no-link sub-link" href="{{ url('admin/users/create') }}">
+							<span class="nav-left-icon inline-block">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+							</span>
+							<span class="inline-block nav-left-link">Add new</span>
+						</a>
+					</li>
+					<li class="nav-left-subitem">
+						<a class="no-link sub-link" href="{{ url('admin/users') }}">
+							<span class="nav-left-icon inline-block">
+								<i class="fa fa-list" aria-hidden="true"></i>
+							</span>
+							<span class="inline-block nav-left-link">List All</span>
+						</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</nav>
 </div>
