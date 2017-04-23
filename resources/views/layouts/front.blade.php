@@ -29,7 +29,7 @@
     <div class="page-header no-margin" style="min-height: 30px;background-color: #4bc0c0">
         <div class="container">
             <div class="wrapper" style="padding-top:20px;color:#fff;font-size:20px;">
-                <span class="logo-text"><i class="fa fa-life-ring" aria-hidden="true"></i>DeepDiveTuts</span>
+                <span class="logo-text"><a href="#">DeepDiveTuts</a></span>
                 <span style="width:50px;">&nbsp;</span>
                 @foreach($menus as $key => $value)
                     <span><a style="color:#fff" href="/{{$value->link}}">{{ $value->title }}</a></span>

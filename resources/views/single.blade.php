@@ -63,5 +63,25 @@
 	code, kbd, pre, samp{
 		font-family: Lato;
 	}
+
+	.spl {
+	    border: 1px solid #cae0cf;
+	    border-radius: 5px;
+	    padding: 3px;
+	    background: #ebebeb;
+	    color: #5e936a;
+	    font-family: 'Miriam Libre', sans-serif;
+	    font-size: 12px;
+	}
+
+	ul li{
+	    font-family: 'Miriam Libre', sans-serif;
+	    font-size: 14px;
+	}
+
+	.hashtags {
+	    font-size: 42px;
+	    color: #f0dccd;
+	}
 </style>
 
