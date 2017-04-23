@@ -111,6 +111,7 @@ module.exports = function(grunt) {
                     //theme files
                     'public/assets/src/js/theme/accordion.js',
                     'public/assets/src/js/theme/list.js',
+
                     //theme files
 
                     'public/assets/src/js/theme/dashboard.js'
@@ -130,6 +131,7 @@ module.exports = function(grunt) {
                     'public/assets/src/js/libs/jquery/jquery-3.1.1.min.js',
                     'public/assets/src/js/libs/moment.js',
                     'public/assets/src/js/libs/charts.min.js',
+                    'public/assets/src/js/libs/prism.js',
 
                     // Bootstrap files
                     'public/assets/src/js/libs/bootstrap-3.3.7/js/dropdown.js',

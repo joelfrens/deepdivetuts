@@ -43,17 +43,17 @@
                                 {{ Form::label('status', 'Status') }}
                                 <div class="custom-radio-btns mg-bm-xs">
                                     @if ($subscription->status == '1')
-                                        {{ Form::radio('status', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('status_active', 'Yes', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::radio('status', '1', true, ['checked' => 'checked', 'class' => 'radio-custom','id' => 'status-yes']) }} 
+                                        {{ Form::label('status-yes', 'Yes', array('class' => 'radio-custom-label')) }}
                                     
-                                        {{ Form::radio('status', '0', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('status_disabled', 'No', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::radio('status', '0', false, ['class' => 'radio-custom','id' => 'status-no']) }} 
+                                        {{ Form::label('status-no', 'No', array('class' => 'radio-custom-label')) }}
                                     @else
-                                        {{ Form::radio('status', '1', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('status_active', 'Yes', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::radio('status', '1', false, ['class' => 'radio-custom','id' => 'status-yes']) }} 
+                                        {{ Form::label('status-yes', 'Yes', array('class' => 'radio-custom-label')) }}
                                         
-                                        {{ Form::radio('status', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('status_disabled', 'No', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::radio('status', '0', true, ['checked' => 'checked', 'class' => 'radio-custom','id' => 'status-no']) }} 
+                                        {{ Form::label('status-no', 'No', array('class' => 'radio-custom-label')) }}
                                     @endif  
                                 </div>
                             </div>  

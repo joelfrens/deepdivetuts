@@ -61,7 +61,7 @@
                             {!! Form::label('Tags', 'Tags') !!}
                             <div class="custom-checkbox">
                                 @foreach ($tags as $key => $tag)
-                                    {!! Form::checkbox('tags[]', $key, true, ['class' => 'checkbox-custom']) !!}
+                                    {!! Form::checkbox('tags[]', $key, true, ['class' => 'checkbox-custom', 'id' => 'tag'.$key]) !!}
                                     {!! Form::label('tag'.$key, $tag, ['class' => 'checkbox-custom-label']) !!}
                                 @endforeach
                             </div>
@@ -75,11 +75,11 @@
                         <div class="form-group">
                             {!! Form::label('Status', 'Status') !!}
                             <div class="custom-radio-btns mg-bm-xs">
-                                {!! Form::radio('status',1, true, ['class' => 'radio-custom']) !!}
-                                {!! Form::label('status_active', 'Active', ['class' => 'radio-custom-label']) !!}
+                                {!! Form::radio('status',1, true, ['class' => 'radio-custom', 'id' => 'status-yes']) !!}
+                                {!! Form::label('status-yes', 'Active', ['class' => 'radio-custom-label']) !!}
 
-                                {!! Form::radio('status',0, true, ['class' => 'radio-custom']) !!}
-                                {!! Form::label('status_disabled', 'Disabled', ['class' => 'radio-custom-label']) !!}
+                                {!! Form::radio('status',0, true, ['class' => 'radio-custom', 'id' => 'status-no']) !!}
+                                {!! Form::label('status-no', 'Disabled', ['class' => 'radio-custom-label']) !!}
                             </div>
                         </div>
 

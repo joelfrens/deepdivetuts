@@ -79,15 +79,15 @@
 
                                 <div class="custom-radio-btns mg-bm-xs">
                                     @if ($page->active == '1')
-                                        {{ Form::radio('active', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        <label for="status" class="radio-custom-label">Yes</label>
-                                        {{ Form::radio('active', '0', false, ['class' => 'radio-custom']) }} 
-                                        <label for="status" class="radio-custom-label">No</label>
+                                        {{ Form::radio('active', '1', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'active-yes']) }} 
+                                        <label for="active-yes" class="radio-custom-label">Yes</label>
+                                        {{ Form::radio('active', '0', false, ['class' => 'radio-custom', 'id' => 'active-no']) }} 
+                                        <label for="active-no" class="radio-custom-label">No</label>
                                     @else
-                                        {{ Form::radio('active', '1', false, ['class' => 'radio-custom']) }} 
-                                        <label for="status" class="radio-custom-label">Yes</label>
-                                        {{ Form::radio('active', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }}
-                                        <label for="status" class="radio-custom-label">No</label>
+                                        {{ Form::radio('active', '1', false, ['class' => 'radio-custom', 'id' => 'active-yes']) }} 
+                                        <label for="active-yes" class="radio-custom-label">Yes</label>
+                                        {{ Form::radio('active', '0', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'active-no']) }}
+                                        <label for="active-no" class="radio-custom-label">No</label>
                                     @endif    
                                 </div>
                             </div>

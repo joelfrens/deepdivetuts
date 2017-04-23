@@ -68,7 +68,7 @@
 								{!! Form::label('Tags', 'Tags') !!}
 								<div class="custom-checkbox">
 								@foreach ($tags as $key => $tag)  
-									{!! Form::checkbox('tags[]', $key, (in_array($key, $selectedtags)?true:false), ['class' => 'checkbox-custom']) !!}
+									{!! Form::checkbox('tags[]', $key, (in_array($key, $selectedtags)?true:false), ['class' => 'checkbox-custom', 'id' => 'tag'.$key]) !!}
 									{!! Form::label('tag'.$key, $tag, ['class' => 'checkbox-custom-label']) !!}
 								@endforeach
 								</div>
@@ -79,15 +79,15 @@
 
 								<div class="custom-radio-btns mg-bm-xs">
 					                @if ($article->active == '1')
-				                        {{ Form::radio('status', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-					                    <label for="status" class="radio-custom-label">Yes</label>
-					                    {{ Form::radio('status', '0', false, ['class' => 'radio-custom']) }} 
-					                    <label for="status" class="radio-custom-label">No</label>
+				                        {{ Form::radio('status', '1', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'status-yes']) }} 
+					                    <label for="status-yes" class="radio-custom-label">Yes</label>
+					                    {{ Form::radio('status', '0', false, ['class' => 'radio-custom', 'id' => 'status-no']) }} 
+					                    <label for="status-no" class="radio-custom-label">No</label>
 					                @else
-					                    {{ Form::radio('status', '1', false, ['class' => 'radio-custom']) }} 
-					                    <label for="status" class="radio-custom-label">Yes</label>
-					                    {{ Form::radio('status', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }}
-					                    <label for="status" class="radio-custom-label">No</label>
+					                    {{ Form::radio('status', '1', false, ['class' => 'radio-custom', 'id' => 'status-yes']) }} 
+					                    <label for="status-yes" class="radio-custom-label">Yes</label>
+					                    {{ Form::radio('status', '0', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'status-no']) }}
+					                    <label for="status-no" class="radio-custom-label">No</label>
 					                @endif    
 				                </div>
 			                </div>

@@ -46,7 +46,7 @@
                                         {{ Form::label('status-yes', 'Yes', array('class' => 'radio-custom-label')) }}
                                     
                                         {{ Form::radio('status', '0', false, ['class' => 'radio-custom', 'id' => 'status-no']) }} 
-                                        {{ Form::label('status-novisible-no', 'No', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::label('status-no', 'No', array('class' => 'radio-custom-label')) }}
                                     @else
                                         {{ Form::radio('status', '1', false, ['class' => 'radio-custom', 'id' => 'status-yes']) }} 
                                         {{ Form::label('status-yes', 'Yes', array('class' => 'radio-custom-label')) }}
