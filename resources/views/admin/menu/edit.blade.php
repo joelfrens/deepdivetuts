@@ -42,18 +42,18 @@
                             <div class="form-group">
                                 {{ Form::label('Status', 'Status') }}
                                 <div class="custom-radio-btns mg-bm-xs">
-                                    @if ($menu->value == '1')
-                                        {{ Form::radio('active', '1', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
+                                    @if ($menu->active == '1')
+                                        {{ Form::radio('active', '1', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'active-yes']) }} 
+                                        {{ Form::label('active-yes', 'Yes', array('class' => 'radio-custom-label')) }}
                                     
-                                        {{ Form::radio('active', '0', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::radio('active', '0', false, ['class' => 'radio-custom', 'id' => 'active-no']) }} 
+                                        {{ Form::label('active-no', 'No', array('class' => 'radio-custom-label')) }}
                                     @else
-                                        {{ Form::radio('active', '1', false, ['class' => 'radio-custom']) }} 
-                                        {{ Form::label('yes', 'Yes', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::radio('active', '1', false, ['class' => 'radio-custom', 'id' => 'active-yes']) }} 
+                                        {{ Form::label('active-yes', 'Yes', array('class' => 'radio-custom-label')) }}
                                         
-                                        {{ Form::radio('active', '0', true, ['checked' => 'checked', 'class' => 'radio-custom']) }} 
-                                        {{ Form::label('no', 'No', array('class' => 'radio-custom-label')) }}
+                                        {{ Form::radio('active', '0', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'active-no']) }} 
+                                        {{ Form::label('active-no', 'No', array('class' => 'radio-custom-label')) }}
                                     @endif  
                                 </div>
                             </div>  

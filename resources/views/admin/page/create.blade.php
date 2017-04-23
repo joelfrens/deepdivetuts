@@ -75,11 +75,11 @@
                         <div class="form-group">
                             {!! Form::label('Status', 'Status') !!}
                             <div class="custom-radio-btns mg-bm-xs">
-                                {!! Form::radio('active',1, true, ['class' => 'radio-custom']) !!}
-                                {!! Form::label('status_active', 'Active', ['class' => 'radio-custom-label']) !!}
+                                {!! Form::radio('active',1, true, ['class' => 'radio-custom', 'id' => 'active-yes']) !!}
+                                {!! Form::label('active-yes', 'Active', ['class' => 'radio-custom-label']) !!}
 
-                                {!! Form::radio('active',0, true, ['class' => 'radio-custom']) !!}
-                                {!! Form::label('status_disabled', 'Disabled', ['class' => 'radio-custom-label']) !!}
+                                {!! Form::radio('active',0, true, ['class' => 'radio-custom', 'id' => 'active-no']) !!}
+                                {!! Form::label('active-no', 'Disabled', ['class' => 'radio-custom-label']) !!}
                             </div>
                         </div>
                         {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}

@@ -13,24 +13,22 @@ use App\Http\Middleware\CheckStatus;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'FrontController@index');
 
 Auth::routes();
 
 Route::get('/admin/home', 'HomeController@index');
 
-Route::get('/test', 'CategoryController@index');
-
 Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function () {
     
     Route::resource('/categories', 'admin\CategoryController');
     Route::resource('/articles', 'admin\ArticleController');
-    //API Route
-    Route::get('/apicall/categories', 'admin\CategoryController@show');
-
+    Route::resource('/subscriptions', 'admin\SubscriptionController');
+    Route::resource('/pages', 'admin\PageController');
+    Route::resource('/settings', 'admin\SettingsController');
+    Route::resource('/menus', 'admin\MenuController');
+    Route::resource('/users', 'admin\UserController');
+    
     // Tag routes
     Route::get('/tags', ['as'=>'tag.add','uses' => 'admin\TagController@index']);
     Route::post('/tag', 'admin\TagController@add');
@@ -38,14 +36,9 @@ Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function
     Route::PATCH('/tag/update/{id}', ['as' => 'tag.update', 'uses' => 'admin\TagController@update']);
     Route::delete('/tag/{tag}', 'admin\TagController@destroy');
     
-    // Subscription Routes
-    Route::resource('/subscriptions', 'admin\SubscriptionController');
-    Route::resource('/pages', 'admin\PageController');
-    Route::resource('/settings', 'admin\SettingsController');
-    Route::resource('/menus', 'admin\MenuController');
-    Route::resource('/users', 'admin\UserController');
-    
 });
+
+Route::get('{slug}', 'FrontController@show');
 
 
 
