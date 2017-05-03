@@ -165,6 +165,7 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
+        Yajra\Disqus\DisqusServiceProvider::class,
 
         /*
          * Package Service Providers...

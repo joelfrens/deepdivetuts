@@ -9069,6 +9069,263 @@ button.close {
   overflow: visible;
   clip: auto;
 }
+/*
+Monokai style - ported by Luigi Maselli - http://grigio.org
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #272822;
+  color: #ddd;
+}
+.hljs-tag,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-strong,
+.hljs-name {
+  color: #f92672;
+}
+.hljs-code {
+  color: #66d9ef;
+}
+.hljs-class .hljs-title {
+  color: white;
+}
+.hljs-attribute,
+.hljs-symbol,
+.hljs-regexp,
+.hljs-link {
+  color: #bf79db;
+}
+.hljs-string,
+.hljs-bullet,
+.hljs-subst,
+.hljs-title,
+.hljs-section,
+.hljs-emphasis,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #a6e22e;
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-selector-id {
+  font-weight: bold;
+}
+/* http://prismjs.com/download.html?themes=prism-coy&languages=markup+css+clike+javascript+git+php */
+/**
+ * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
+ * @author Tim  Shedor
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+/* Code blocks */
+pre[class*="language-"] {
+  position: relative;
+  margin: .5em 0;
+  /*box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+	border-left: 10px solid #358ccb;*/
+  background-color: #fdfdfd;
+  background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-size: 3em 3em;
+  background-origin: content-box;
+  overflow: visible;
+  padding: 0;
+}
+code[class*="language"] {
+  max-height: inherit;
+  height: 100%;
+  padding: 0 1em;
+  display: block;
+  overflow: auto;
+}
+/* Margin bottom to accomodate shadow */
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background-color: #fdfdfd;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+}
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  position: relative;
+  padding: .2em;
+  border-radius: 0.3em;
+  color: #c92c2c;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: inline;
+  white-space: normal;
+}
+pre[class*="language-"]:before,
+pre[class*="language-"]:after {
+  content: '';
+  z-index: -2;
+  display: block;
+  position: absolute;
+  bottom: 0.75em;
+  left: 0.18em;
+  width: 40%;
+  height: 20%;
+  max-height: 13em;
+  box-shadow: 0px 13px 8px #979797;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+:not(pre) > code[class*="language-"]:after,
+pre[class*="language-"]:after {
+  right: 0.75em;
+  left: auto;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #7D8B99;
+}
+.token.punctuation {
+  color: #5F6364;
+}
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.function-name,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #c92c2c;
+}
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.function,
+.token.builtin,
+.token.inserted {
+  color: #2f9c0a;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.class-name {
+  color: #1990b8;
+}
+.token.regex,
+.token.important {
+  color: #e90;
+}
+.language-css .token.string,
+.style .token.string {
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
+}
+.token.important {
+  font-weight: normal;
+}
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.entity {
+  cursor: help;
+}
+.namespace {
+  opacity: .7;
+}
+@media screen and (max-width: 767px) {
+  pre[class*="language-"]:before,
+  pre[class*="language-"]:after {
+    bottom: 14px;
+    box-shadow: none;
+  }
+}
+/* Plugin styles */
+.token.tab:not(:empty):before,
+.token.cr:before,
+.token.lf:before {
+  color: #e0d7d1;
+}
+/* Plugin styles: Line Numbers */
+pre[class*="language-"].line-numbers {
+  padding-left: 0;
+}
+pre[class*="language-"].line-numbers code {
+  padding-left: 3.8em;
+}
+pre[class*="language-"].line-numbers .line-numbers-rows {
+  left: 0;
+}
+/* Plugin styles: Line Highlight */
+pre[class*="language-"][data-line] {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+pre[data-line] code {
+  position: relative;
+  padding-left: 4em;
+}
+pre .line-highlight {
+  margin-top: 0;
+}
 /* ============================================ *
  * Name
  *
@@ -9097,9 +9354,18 @@ body {
   position: relative;
 }
 .page-header {
-  margin: 0;
+  margin: 0 0 20px 0;
   padding: 0;
   border: 0;
+  min-height: 200px;
+  background-color: #4bc0c0;
+  color: #ffffff;
+  background-image: url(//p6.zdassets.com/hc/theme_assets/138842/200037786//pattern_transparent.png), linear-gradient(-150deg, #00C1B6 0%, #136EB5 97%);
+  background-size: 380px, contain;
+}
+.page-footer {
+  min-height: 30px;
+  background-color: #4bc0c0;
 }
 /** Bootstrap overides **/
 .dropdown-menu {
@@ -9158,6 +9424,44 @@ body {
   vertical-align: top;
   background-color: teal;
   min-height: 600px;
+}
+.pagination {
+  border-radius: 0;
+}
+.pagination > li > a,
+.pagination > li > span {
+  border: 1px solid #4bc0c0;
+  border-radius: 0;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  color: #ffffff;
+  background-color: #4bc0c0;
+  border-color: #4bc0c0;
+}
+.pagination > li > a,
+.pagination > li > span {
+  color: #4bc0c0;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span,
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  border-radius: 0;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  color: #38a0a0;
+}
+.form-control {
+  height: 50px;
+  font-size: 20px;
 }
 pre {
   padding: 0;
@@ -9251,7 +9555,7 @@ h3,
 }
 h4,
 .h4 {
-  font-size: 20px;
+  font-size: 24px;
 }
 h5,
 .h5 {
@@ -9334,4 +9638,123 @@ h6,
 /* ============================================ *
  * MIN WIDTH QUERIES
  * ============================================ */
+/* ============================================ *
+ * Article
+ *
+ *
+ * ============================================ */
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+.search-box {
+  -webkit-box-shadow: 0px 5px 16px -8px #4bc0c0;
+  box-shadow: 0px 5px 16px -8px #4bc0c0;
+}
+.search-box .search-input {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: 0;
+}
+.box-wrapper {
+  padding: 12px;
+  font-weight: 300;
+  line-height: 2em;
+}
+.box-foot {
+  font-weight: 100;
+  font-size: 14px;
+}
+.box-foot-author {
+  color: blue;
+}
+.box-foot-cat {
+  color: green;
+}
+.box-foot-tag {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid #ff9800;
+  padding: 2px 5px;
+  font-size: 10px;
+}
+.like-box {
+  color: #ff5252;
+}
+.box-separator {
+  color: #efefef;
+}
+.box-content {
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+.spl {
+  border: 1px solid #cae0cf;
+  background: #ebebeb;
+  color: #5e936a;
+  border-radius: 2px;
+  padding: 3px;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+}
+ul li {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+.hashtags {
+  font-size: 42px;
+  color: #f0dccd;
+}
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+/* ============================================ *
+ * Header
+ *
+ *
+ * ============================================ */
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+.logo-text {
+  padding: 20px 20px 20px 0;
+  display: inline-block;
+  min-height: 100px;
+  font-size: 20px;
+}
+.tag-line {
+  font-size: 26px;
+  font-weight: 400;
+}
+.nav-top-head {
+  float: right;
+  padding: 20px 0 20px 0;
+}
+.nav-item-link {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 5px 8px;
+}
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+.c-white {
+  color: #ffffff;
+}
+.c-theme-main {
+  color: #263238;
+}
+.c-theme-secondary {
+  color: #1f2b45;
+}
+.c-theme-primary {
+  color: #4bc0c0;
+}
 /*# sourceMappingURL=front.less.map */

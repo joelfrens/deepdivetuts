@@ -22,7 +22,8 @@ module.exports = function(grunt) {
                     'public/assets/src/less/web/*.less'
                 ],
                 tasks: [
-                    'less:style'
+                    'less:style',
+                    'less:web'
                 ]
             },
             // JS Assets
@@ -63,10 +64,10 @@ module.exports = function(grunt) {
             web: {
                 options: {
                     sourceMap: true,
-                    sourceMapFilename: 'assets/build/css/front.less.map',
+                    sourceMapFilename: 'public/assets/build/css/front.less.map',
                     sourceMapURL: 'front.less.map',
                     // base path for the path set in the map file
-                    sourceMapBasepath: 'assets',
+                    sourceMapBasepath: 'public/assets',
                     // root path for the path set in the map file which will be used with base path
                     sourceMapRootpath: '/'
                 },

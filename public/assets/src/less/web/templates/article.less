@@ -1,0 +1,122 @@
+/* ============================================ *
+ * Article
+ *
+ *
+ * ============================================ */
+
+/* ============================================ *
+ * BASE STYLES
+* ============================================ */
+
+.search-box {
+	.box-shadow(0px 5px 16px -8px rgba(75,192,192,1));
+	.search-input {
+		.box-shadow(none);
+		border-radius: 0;
+		border: 0;
+	}
+}
+.box-wrapper {
+	padding: 12px;
+	font-weight: @font-light;
+	line-height: 2em;
+}
+
+.box-foot {
+	font-weight: @font-thin;
+	font-size: 14px;
+}
+.box-foot-author {
+	color: @theme-blue-color;
+}
+.box-foot-cat {
+	color: @theme-green-color;
+}
+.box-foot-tag {
+	border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid @tag-border-color;
+    padding: 2px 5px;
+    font-size: 10px;
+}
+.like-box {
+	color: @theme-like-color;
+}
+.box-separator {
+	color: @theme-grey-lightest;
+}
+
+.box-content {
+	font-size: 18px;
+	font-weight:@font-light;
+	margin-top: 10px;
+}
+
+.spl {
+    border: 1px solid @spl-tag-border-color;
+    background: @spl-tag-bgcolor;
+    color: @spl-tag-color;
+    border-radius: 2px;
+    padding: 3px;
+    font-family: @font-family;
+    font-size: 12px;
+}
+
+ul li{
+    font-family: @font-family;
+    font-size: 14px;
+}
+
+.hashtags {
+    font-size: 42px;
+    color: @theme-hash-tag-color;
+}
+
+/* ============================================ *
+ * MAX WIDTH QUERIES
+ * ============================================ */
+
+
+// *** Mobile devices only (less than 480px) *** //
+@media (max-width: (@screen-phone - 1)) {
+
+}
+
+// *** Mobile & tablet devices only (less than 600px) *** //
+@media (max-width: @screen-xs-max) {
+}
+
+// *** Mobile & tablet devices only (less than 770px) *** //
+@media (max-width: @screen-sm-max) {
+}
+
+
+
+/* ============================================ *
+ * MIN WIDTH QUERIES
+ * ============================================ */
+
+// *** Mobile devices (480px and up) *** //
+@media (min-width: @screen-xs-min) {
+
+}
+
+// *** Small devices (tablets, 600px and up) *** //
+@media (min-width: @screen-sm-min) {
+
+}
+
+// *** Medium devices (desktops, 770px and up) *** //
+@media (min-width: @screen-md-min) {
+
+}
+
+// *** Large devices (large desktops, 980px and up) *** //
+@media (min-width: @screen-lg-min) {
+
+}
+
+// *** XLarge devices (Xlarge desktops, 1200px and up) *** //
+@media (min-width: @screen-xl-min) {
+
+}

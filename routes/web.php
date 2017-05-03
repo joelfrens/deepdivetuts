@@ -39,7 +39,9 @@ Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function
 });
 
 Route::get('{slug}', 'FrontController@show');
-
+Route::get('/tag/{tag}', 'FrontController@getArticlesByTag');
+Route::get('/category/{category}', 'FrontController@getArticlesByCategory');
+Route::get('/search/{keyword}', 'FrontController@searchArticles');
 
 
 

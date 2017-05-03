@@ -51,7 +51,8 @@ class FrontController extends Controller
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
-            'menus' => $menus
+            'menus' => $menus,
+            'keyword' => ''
         ]);
 
     	
@@ -87,6 +88,116 @@ class FrontController extends Controller
             $article->tags = $selectedtags;
 
         }
-    	return view('single',['article' => $articles, 'menus' => $menus]);
+    	return view('single',['article' => $articles, 'menus' => $menus,
+            'keyword' => '']);
     }
+
+    public function getArticlesByTag($tag) {
+    	$menus = DB::table('menus')
+                    ->get();
+
+        echo $tag;
+        exit;
+    }
+
+    public function getArticlesByCategory($category){
+    	$menus = DB::table('menus')
+                    ->get();
+
+        // Get articles
+    	// Get users articles
+        $articles = DB::table('articles')
+                    ->join('categories', 'articles.category_id', '=', 'categories.id')
+                    ->join('users', 'articles.user_id', '=', 'users.id')
+                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->where('categories.slug', '=', $category)
+                    ->paginate(10);
+
+        // Get all categories
+        $categories = \App\Category::pluck('name','id');
+        
+        // Get all tags
+        $tags = \App\Tag::pluck('name','id');
+        
+        foreach ($articles as $article) {
+            // Get article details based on the Id
+            $item = \App\Article::with('tag')->findORFail($article->id);
+            // add tags to the articles
+                        
+            $selectedtags = array();
+
+            foreach ($item['tag'] as $tag) {
+                $selectedtags[] = $tag['name'];
+            }
+            $article->tags = $selectedtags;
+
+        }
+
+        return view('listing', [
+            'articles' => $articles,
+            'categories' => $categories,
+            'tags' => $tags,
+            'menus' => $menus,
+            'keyword' => ''
+        ]);
+    }
+
+    public function getMostViewedArticles() {
+
+
+    }
+
+    public function searchArticles($keyword) {
+        
+        if (!isset($keyword)) {
+            $keyword = '';
+        }
+
+        $menus = DB::table('menus')
+                    ->get();
+
+        // Get articles
+        // Get users articles
+        $articles = DB::table('articles')
+                    ->join('categories', 'articles.category_id', '=', 'categories.id')
+                    ->join('users', 'articles.user_id', '=', 'users.id')
+                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->where('articles.title', 'like', '%'.$keyword.'%')
+                    ->orWhere('articles.content', 'like', '%'.$keyword.'%')
+                    ->paginate(10);
+                  
+        // Get all categories
+        $categories = \App\Category::pluck('name','id');
+        
+        // Get all tags
+        $tags = \App\Tag::pluck('name','id');
+        
+        foreach ($articles as $article) {
+            // Get article details based on the Id
+            $item = \App\Article::with('tag')->findORFail($article->id);
+            // add tags to the articles
+                        
+            $selectedtags = array();
+
+            foreach ($item['tag'] as $tag) {
+                $selectedtags[] = $tag['name'];
+            }
+            $article->tags = $selectedtags;
+
+        }
+
+        return view('listing', [
+            'articles' => $articles,
+            'categories' => $categories,
+            'tags' => $tags,
+            'menus' => $menus,
+            'keyword' => $keyword
+        ]);
+    }
+
+    public function getArchivesByMonth($month) {
+    	
+    }
+
+    //public function 
 }

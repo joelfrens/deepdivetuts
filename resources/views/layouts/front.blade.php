@@ -11,6 +11,7 @@
 
     <!--- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
 
     <!--- CSS Files here-->
     <link rel="stylesheet" href="../assets/build/css/front.css">
@@ -26,40 +27,51 @@
 
 <body>
 <div class="page-wrapper">
-    <div class="page-header no-margin" style="min-height: 30px;background-color: #4bc0c0">
+    <div class="page-header c-white">
         <div class="container">
-            <div class="wrapper" style="padding-top:20px;color:#fff;font-size:20px;">
-                <span class="logo-text"><a href="#">DeepDiveTuts</a></span>
-                <span style="width:50px;">&nbsp;</span>
-                @foreach($menus as $key => $value)
-                    <span><a style="color:#fff" href="/{{$value->link}}">{{ $value->title }}</a></span>
-                @endforeach
+            <div class="row">
+                <div class="col-lg-2">
+                    <span class="logo-text">
+                        <a href="#" class="no-link c-white" style="font-family: 'Titan One', cursive;">DeepDiveTuts</a>
+                    </span>
+                </div>
+                <div class="col-lg-10">
+                    <div class="nav-top-head">
+                        @foreach($menus as $key => $value)
+                            <span class="nav-top-item">
+                                <a class="no-link nav-item-link" href="/{{$value->link}}">{{ $value->title }}</a>
+                            </span>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            <div class="page-header" style="text-align:center;color:#fff">
-                <medium>Laravel, PHP and Linux tutorials</medium>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center tag-line">Laravel, PHP and Linux tutorials..plus videos, free CMS, templates and much more...</div>
+                </div>
             </div>
-            <div>&nbsp;</div>   
-            
         </div>
-    </div>
-    <div>&nbsp;</div>     
+    </div>  
     <div class="container">
-        <div class="col-lg-12">
-            <div class="input-group" style="-webkit-box-shadow: 0px 5px 16px -8px rgba(75,192,192,1);
--moz-box-shadow: 0px 5px 16px -8px rgba(75,192,192,1);
-box-shadow: 0px 5px 16px -8px rgba(75,192,192,1);">
-              <input type="text" class="form-control" placeholder="Search for..." style="box-shadow:none;border:0;border-radius: 0">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button" style="box-shadow:none;border:0;border-radius: 0;">Go!</button>
-              </span>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-    </div>
-    <div>&nbsp;</div>     
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="input-group search-box">
+                    @if ($keyword)
+                        <input type="text" class="form-control search-input" placeholder="Search tutorials..." value="{{$keyword}}">
+                    @else
+                        <input type="text" class="form-control search-input" placeholder="Search tutorials..." value="">
+                    @endif
+                    <span class="input-group-btn">
+                        <button class="btn btn-default search-input" type="button"></button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
+    </div>   
         
     @yield('content')
 
-    <div class="page-footer" style="min-height: 30px;background-color: #2e3234">
+    <div class="page-footer">
     </div>
 </div>
 <script src="../assets/build/js/app_foot_web.min.js"></script>
