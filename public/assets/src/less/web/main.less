@@ -32,9 +32,18 @@ body {
 }
 
 .page-header {
-	margin: 0;
+	margin: 0 0 20px 0;
 	padding: 0;
 	border: 0;
+	min-height: 200px;
+	background-color: @theme-primary;
+	color: @theme-white;
+	background-image: url(//p6.zdassets.com/hc/theme_assets/138842/200037786//pattern_transparent.png), linear-gradient(-150deg, #00C1B6 0%, #136EB5 97%);
+    background-size: 380px, contain;
+}
+.page-footer {
+	min-height: 30px;
+	background-color: @theme-primary;
 }
 
 /** Bootstrap overides **/
@@ -88,6 +97,44 @@ body {
 	vertical-align: top;
 	background-color: teal;
 	min-height: 600px;
+}
+.pagination {
+	border-radius: 0;
+}
+.pagination > li > a, .pagination > li > span {
+	border: 1px solid @theme-primary;
+	border-radius: 0;
+}
+.pagination > .active > a, 
+.pagination > .active > span, 
+.pagination > .active > a:hover, 
+.pagination > .active > span:hover, 
+.pagination > .active > a:focus, 
+.pagination > .active > span:focus {
+    color: @theme-white;
+    background-color: @theme-primary;
+    border-color: @theme-primary;
+}
+.pagination > li > a, 
+.pagination > li > span {
+	color: @theme-primary;
+}
+.pagination > li:last-child > a, 
+.pagination > li:last-child > span,
+.pagination > li:first-child > a, 
+.pagination > li:first-child > span {
+    border-radius: 0;
+}
+.pagination > li > a:hover, 
+.pagination > li > span:hover, 
+.pagination > li > a:focus, 
+.pagination > li > span:focus {
+	color: darken(@theme-primary, 10);
+}
+
+.form-control{
+	height: 50px;
+	font-size: 20px;
 }
 
 pre {
