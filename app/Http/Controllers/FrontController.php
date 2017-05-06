@@ -71,7 +71,8 @@ class FrontController extends Controller
 
         $articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
-                    ->select('articles.*', 'categories.name as category_name')
+                    ->join('users', 'articles.user_id', '=', 'users.id')
+                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('articles.slug', "=", $slug)
                     ->get();
     	// Get all categories
@@ -93,7 +94,7 @@ class FrontController extends Controller
             $article->tags = $selectedtags;
 
         }
-        
+
         // Get the settings 
         $settings = Setting::pluck('value','code');
 

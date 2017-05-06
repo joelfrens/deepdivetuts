@@ -81,6 +81,66 @@
     @yield('content')
 
     <div class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    
+                    <div class="nav-footer">
+                        <ul class="footer-links">
+                            <li class="nav-footer-item">
+                                <a class="no-link nav-item-foot-link" href="/">Home</a>
+                            </li>
+                            @foreach($menus as $key => $value)
+                                <li class="nav-footer-item">
+                                    <a class="no-link nav-item-foot-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    
+                    <div class="nav-footer">
+                        <ul class="footer-links">
+                            <li class="nav-footer-item">
+                                <a class="no-link nav-item-foot-link" href="/">Home</a>
+                            </li>
+                            @foreach($menus as $key => $value)
+                                <li class="nav-footer-item">
+                                    <a class="no-link nav-item-foot-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    
+                    <div class="nav-footer">
+                        <ul class="footer-links">
+                            <li class="nav-footer-item">
+                                <a class="no-link nav-item-foot-link" href="/">Home</a>
+                            </li>
+                            @foreach($menus as $key => $value)
+                                <li class="nav-footer-item">
+                                    <a class="no-link nav-item-foot-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                &copy; deepdivetuts.com. All rights reserved
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
 <script src="../assets/build/js/app_foot_web.min.js"></script>

@@ -9458,6 +9458,9 @@ body {
 .pagination > li > span:focus {
   color: #38a0a0;
 }
+.footer-links {
+  list-style: none;
+}
 .form-control {
   height: 50px;
   font-size: 20px;
@@ -9712,9 +9715,9 @@ h6,
   background: #ebebeb;
   color: #5e936a;
   border-radius: 6px;
-  padding: 2px;
+  padding: 1px;
   font-family: 'Lato', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 ul li {
@@ -9762,6 +9765,12 @@ ul li {
 .nav-item-link:hover {
   background-color: #fff;
   border-radius: 5px;
+  cursor: pointer;
+}
+.nav-item-foot-link {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 2px 8px;
   cursor: pointer;
 }
 /* ============================================ *
