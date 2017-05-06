@@ -21,14 +21,7 @@
 					<span class="box-foot-tag">{{ $tag }}</span>
 				@endforeach
 			</div>
-			@if ($key == 5)
-				<div class="sep-wrap">
-					<hr class="box-separator no-margin">
-				</div>
-				<div class="box-foot">
-					<img src="http://www.lipsum.com/banners/ding.png" width="100%" border="0" alt="Time tracking for freelancers">
-				</div>
-			@endif
+			
 		</div>
 		<div class="sep-wrap">
 			<hr class="box-separator no-margin">

@@ -16,41 +16,19 @@ class FrontController extends Controller
     public function index()
     {	
 
-    	// Get header links
-    	$menus = DB::table('menus')
-                    ->get();
-
-    	// Get articles
-    	// Get users articles
-        $articles = DB::table('articles')
+    	$articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
-                    ->paginate(10);
+                    ->paginate(15);
 
-        // Get all categories
-        $categories = \App\Category::pluck('name','id');
+        $menus = $this->getMenus();
+        $categories = $this->getCategories();
+        $tags = $this->getTags();
+        $settings = $this->getSettings();
         
-        // Get all tags
-        $tags = \App\Tag::pluck('name','id');
-        
-        foreach ($articles as $article) {
-            // Get article details based on the Id
-            $item = \App\Article::with('tag')->findORFail($article->id);
-            // add tags to the articles
-                        
-            $selectedtags = array();
+        $articles = $this->attachTagsToArticles($articles);
 
-            foreach ($item['tag'] as $tag) {
-                $selectedtags[] = $tag['name'];
-            }
-            $article->tags = $selectedtags;
-
-        }
-
-        // Get the settings 
-        $settings = Setting::pluck('value','code');
-        
         return view('listing', [
             'articles' => $articles,
             'categories' => $categories,
@@ -65,40 +43,21 @@ class FrontController extends Controller
 
     public function show($slug){
 
-    	// Get header links
-    	$menus = DB::table('menus')
-                    ->get();
-
-        $articles = DB::table('articles')
+    	$articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('articles.slug', "=", $slug)
                     ->get();
-    	// Get all categories
-        $categories = \App\Category::pluck('name','id');
+    	
+        $menus = $this->getMenus();
+        $categories = $this->getCategories();
+        $tags = $this->getTags();
+        $settings = $this->getSettings();
         
-        // Get all tags
-        $tags = \App\Tag::pluck('name','id');
-        
-        foreach ($articles as $article) {
-            // Get article details based on the Id
-            $item = \App\Article::with('tag')->findORFail($article->id);
-            // add tags to the articles
-                        
-            $selectedtags = array();
+        $articles = $this->attachTagsToArticles($articles);
 
-            foreach ($item['tag'] as $tag) {
-                $selectedtags[] = $tag['name'];
-            }
-            $article->tags = $selectedtags;
-
-        }
-
-        // Get the settings 
-        $settings = Setting::pluck('value','code');
-
-    	return view('single',[
+        return view('single',[
             'article' => $articles, 
             'menus' => $menus,
             'keyword' => '',
@@ -106,49 +65,21 @@ class FrontController extends Controller
         ]);
     }
 
-    public function getArticlesByTag($tag) {
-    	$menus = DB::table('menus')
-                    ->get();
-
-        echo $tag;
-        exit;
-    }
-
     public function getArticlesByCategory($category){
-    	$menus = DB::table('menus')
-                    ->get();
-
-        // Get articles
-    	// Get users articles
+    	
         $articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('categories.slug', '=', $category)
-                    ->paginate(10);
+                    ->paginate(15);
 
-        // Get all categories
-        $categories = \App\Category::pluck('name','id');
+        $menus = $this->getMenus();
+        $categories = $this->getCategories();
+        $tags = $this->getTags();
+        $settings = $this->getSettings();
         
-        // Get all tags
-        $tags = \App\Tag::pluck('name','id');
-        
-        foreach ($articles as $article) {
-            // Get article details based on the Id
-            $item = \App\Article::with('tag')->findORFail($article->id);
-            // add tags to the articles
-                        
-            $selectedtags = array();
-
-            foreach ($item['tag'] as $tag) {
-                $selectedtags[] = $tag['name'];
-            }
-            $article->tags = $selectedtags;
-
-        }
-
-        // Get the settings 
-        $settings = Setting::pluck('value','code');
+        $articles = $this->attachTagsToArticles($articles);
 
         return view('listing', [
             'articles' => $articles,
@@ -160,10 +91,7 @@ class FrontController extends Controller
         ]);
     }
 
-    public function getMostViewedArticles() {
-
-
-    }
+    
 
     public function searchArticles(Request $request) {
         
@@ -174,41 +102,20 @@ class FrontController extends Controller
             $keyword = $request->keyword;
         }
 
-        $menus = DB::table('menus')
-                    ->get();
-
-        // Get articles
-        // Get users articles
         $articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('articles.title', 'like', '%'.$keyword.'%')
                     ->orWhere('articles.content', 'like', '%'.$keyword.'%')
-                    ->paginate(10);
-                  
-        // Get all categories
-        $categories = \App\Category::pluck('name','id');
-        
-        // Get all tags
-        $tags = \App\Tag::pluck('name','id');
-        
-        foreach ($articles as $article) {
-            // Get article details based on the Id
-            $item = \App\Article::with('tag')->findORFail($article->id);
-            // add tags to the articles
-                        
-            $selectedtags = array();
+                    ->paginate(15);
 
-            foreach ($item['tag'] as $tag) {
-                $selectedtags[] = $tag['name'];
-            }
-            $article->tags = $selectedtags;
+        $menus = $this->getMenus();
+        $categories = $this->getCategories();
+        $tags = $this->getTags();
+        $settings = $this->getSettings();
 
-        }
-
-        // Get the settings 
-        $settings = Setting::pluck('value','code');
+        $articles = $this->attachTagsToArticles($articles);
 
         return view('listing', [
             'articles' => $articles,
@@ -221,7 +128,6 @@ class FrontController extends Controller
     }
 
     public function getPage($slug) {
-        // Get header links
         $menus = DB::table('menus')
                     ->get();
 
@@ -229,16 +135,68 @@ class FrontController extends Controller
                     ->where('pages.slug', "=", $slug)
                     ->get();
 
-        // Get the settings 
         $settings = Setting::pluck('value','code');
         
         return view('page',['page' => $page, 'menus' => $menus,
             'keyword' => '', 'settings' => $settings]);
     }
 
+    public function getMenus() {
+        $menus = DB::table('menus')
+                    ->get();
+        return $menus;
+    }
+
+    public function getSettings() {
+        $settings = Setting::pluck('value','code');
+        
+        return $settings;        
+    }
+
+    public function getTags() {
+        $tags = \App\Tag::pluck('name','id');
+        
+        return $tags;
+    }
+
+    public function getCategories() {
+        $categories = \App\Category::pluck('name','id');
+
+        return $categories;
+    }
+
+    public function attachTagsToArticles($articles) {
+
+        foreach ($articles as $article) {
+            
+            $item = \App\Article::with('tag')->findORFail($article->id);
+                        
+            $selectedtags = array();
+
+            foreach ($item['tag'] as $tag) {
+                $selectedtags[] = $tag['name'];
+            }
+            $article->tags = $selectedtags;
+
+        }
+
+        return $articles;
+    }
+
+    /* TO DO */
     public function getArchivesByMonth($month) {
     	
     }
 
-    //public function 
+    /* TO DO */
+    public function getMostViewedArticles() {
+
+    }
+
+    /* TO DO */
+    public function getArticlesByTag($tag) {
+        
+    }
+
+    
 }
