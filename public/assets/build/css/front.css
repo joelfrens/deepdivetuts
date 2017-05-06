@@ -9717,6 +9717,15 @@ h6,
   font-weight: 300;
   margin-top: 10px;
 }
+.box-content ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.box-content ul li {
+  font-size: 18px;
+  font-weight: 300;
+  margin-left: 20px;
+}
 .spl {
   border: 1px solid #cae0cf;
   background: #ebebeb;
