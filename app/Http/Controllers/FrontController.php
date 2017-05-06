@@ -58,7 +58,6 @@ class FrontController extends Controller
             'menus' => $menus,
             'keyword' => '',
             'settings' => $settings
-
         ]);
 
     	
@@ -94,8 +93,16 @@ class FrontController extends Controller
             $article->tags = $selectedtags;
 
         }
-    	return view('single',['article' => $articles, 'menus' => $menus,
-            'keyword' => '']);
+
+        // Get the settings 
+        $settings = Setting::pluck('value','code');
+
+    	return view('single',[
+            'article' => $articles, 
+            'menus' => $menus,
+            'keyword' => '',
+            'settings' => $settings
+        ]);
     }
 
     public function getArticlesByTag($tag) {
@@ -139,12 +146,16 @@ class FrontController extends Controller
 
         }
 
+        // Get the settings 
+        $settings = Setting::pluck('value','code');
+
         return view('listing', [
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
             'menus' => $menus,
-            'keyword' => ''
+            'keyword' => '',
+            'settings' => $settings
         ]);
     }
 
