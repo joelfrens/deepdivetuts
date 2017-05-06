@@ -9,13 +9,30 @@
 * ============================================ */
 
 .search-box {
+	width: 100%;
+	background-color: @theme-white;
 	.box-shadow(0px 5px 16px -8px rgba(75,192,192,1));
-	.search-input {
+	.search-input,
+	.search-btn {
 		.box-shadow(none);
 		border-radius: 0;
 		border: 0;
 	}
+	.search-input {
+		line-height: 2.728571;
+		width: 95%;
+	}
+
+	.search-btn-wrap {
+		display: inline-block;
+	    width: 5%;
+	    height: 50px;
+	}
+	.search-btn {
+		margin-top: 7px;
+	}
 }
+
 .box-wrapper {
 	padding: 12px;
 	font-weight: @font-light;

@@ -9,6 +9,7 @@ use Validator;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use App\Article;
+use App\Setting;
 
 class FrontController extends Controller
 {
@@ -47,12 +48,17 @@ class FrontController extends Controller
 
         }
 
+        // Get the settings 
+        $settings = Setting::pluck('value','code');
+        
         return view('listing', [
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
             'menus' => $menus,
-            'keyword' => ''
+            'keyword' => '',
+            'settings' => $settings
+
         ]);
 
     	
@@ -147,10 +153,13 @@ class FrontController extends Controller
 
     }
 
-    public function searchArticles($keyword) {
+    public function searchArticles(Request $request) {
         
-        if (!isset($keyword)) {
+        if (!isset($request->keyword)) {
             $keyword = '';
+        }
+        else {
+            $keyword = $request->keyword;
         }
 
         $menus = DB::table('menus')
@@ -186,13 +195,33 @@ class FrontController extends Controller
 
         }
 
+        // Get the settings 
+        $settings = Setting::pluck('value','code');
+
         return view('listing', [
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
             'menus' => $menus,
-            'keyword' => $keyword
+            'keyword' => $keyword,
+            'settings' => $settings
         ]);
+    }
+
+    public function getPage($slug) {
+        // Get header links
+        $menus = DB::table('menus')
+                    ->get();
+
+        $page = DB::table('pages')
+                    ->where('pages.slug', "=", $slug)
+                    ->get();
+
+        // Get the settings 
+        $settings = Setting::pluck('value','code');
+        
+        return view('page',['page' => $page, 'menus' => $menus,
+            'keyword' => '', 'settings' => $settings]);
     }
 
     public function getArchivesByMonth($month) {

@@ -9360,8 +9360,7 @@ body {
   min-height: 200px;
   background-color: #4bc0c0;
   color: #ffffff;
-  background-image: url(//p6.zdassets.com/hc/theme_assets/138842/200037786//pattern_transparent.png), linear-gradient(-150deg, #00C1B6 0%, #136EB5 97%);
-  background-size: 380px, contain;
+  background: linear-gradient(-150deg, #00C1B6 0%, #136EB5 97%);
 }
 .page-footer {
   min-height: 30px;
@@ -9647,14 +9646,29 @@ h6,
  * BASE STYLES
 * ============================================ */
 .search-box {
+  width: 100%;
+  background-color: #ffffff;
   -webkit-box-shadow: 0px 5px 16px -8px #4bc0c0;
   box-shadow: 0px 5px 16px -8px #4bc0c0;
 }
-.search-box .search-input {
+.search-box .search-input,
+.search-box .search-btn {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
   border: 0;
+}
+.search-box .search-input {
+  line-height: 2.728571;
+  width: 95%;
+}
+.search-box .search-btn-wrap {
+  display: inline-block;
+  width: 5%;
+  height: 50px;
+}
+.search-box .search-btn {
+  margin-top: 7px;
 }
 .box-wrapper {
   padding: 12px;
@@ -9737,7 +9751,11 @@ ul li {
 .nav-item-link {
   color: #ffffff;
   font-size: 16px;
-  padding: 5px 8px;
+  padding: 2px 8px;
+}
+.nav-item-link:hover {
+  background-color: #fff;
+  border-radius: 5px;
 }
 /* ============================================ *
  * MAX WIDTH QUERIES

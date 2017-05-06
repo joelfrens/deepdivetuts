@@ -37,9 +37,12 @@
                 </div>
                 <div class="col-lg-10">
                     <div class="nav-top-head">
+                        <span class="nav-top-item">
+                            <a class="no-link nav-item-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
+                        </span>
                         @foreach($menus as $key => $value)
                             <span class="nav-top-item">
-                                <a class="no-link nav-item-link" href="/{{$value->link}}">{{ $value->title }}</a>
+                                <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
                             </span>
                         @endforeach
                     </div>
@@ -56,14 +59,17 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="input-group search-box">
-                    @if ($keyword)
-                        <input type="text" class="form-control search-input" placeholder="Search tutorials..." value="{{$keyword}}">
-                    @else
-                        <input type="text" class="form-control search-input" placeholder="Search tutorials..." value="">
-                    @endif
-                    <span class="input-group-btn">
-                        <button class="btn btn-default search-input" type="button"></button>
-                    </span>
+                    <form action="/search" method="POST" role="search">
+                        {{ csrf_field() }}
+                        @if ($keyword)
+                            <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="{{$keyword}}">
+                        @else
+                            <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="">
+                        @endif
+                        <span class="input-group-btn search-btn-wrap">
+                            <button class="btn btn-default search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                    </form>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div>
