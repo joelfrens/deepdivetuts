@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>DeepDive</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <title>DeepDiveTuts - Laravel, PHP and Linux tutorials..plus videos, free CMS, templates and much more...</title>
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Joel Fernandes">
+    
     <!--- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">

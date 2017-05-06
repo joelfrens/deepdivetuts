@@ -9,12 +9,9 @@
         	{{ $page[0]->title }}
         </h1>
         <br />
-        
         <div class="box-content">
         	{!! $page[0]->content !!}
-        	
         </div>
-        
     </div>
 
 </div>

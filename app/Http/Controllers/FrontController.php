@@ -93,7 +93,7 @@ class FrontController extends Controller
             $article->tags = $selectedtags;
 
         }
-
+        
         // Get the settings 
         $settings = Setting::pluck('value','code');
 
