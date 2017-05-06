@@ -173,6 +173,6 @@ class MenuController extends Controller
 
         // redirect
         Session::flash('message', 'Successfully deleted the menu!');
-        return redirect('admin/menu')->with('status', 'Menu Deleted!');
+        return redirect('admin/menus')->with('status', 'Menu Deleted!');
     }
 }

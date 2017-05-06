@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>DeepDive</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <title>DeepDiveTuts - Laravel, PHP and Linux tutorials..plus videos, free CMS, templates and much more...</title>
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Joel Fernandes">
+    
     <!--- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
@@ -32,14 +35,17 @@
             <div class="row">
                 <div class="col-lg-2">
                     <span class="logo-text">
-                        <a href="#" class="no-link c-white" style="font-family: 'Titan One', cursive;">DeepDiveTuts</a>
+                        <a href="{{ $settings['site_url'] }}" class="no-link c-white" style="font-family: 'Titan One', cursive;">DeepDiveTuts</a>
                     </span>
                 </div>
                 <div class="col-lg-10">
                     <div class="nav-top-head">
+                        <span class="nav-top-item">
+                            <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
+                        </span>
                         @foreach($menus as $key => $value)
                             <span class="nav-top-item">
-                                <a class="no-link nav-item-link" href="/{{$value->link}}">{{ $value->title }}</a>
+                                <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
                             </span>
                         @endforeach
                     </div>
@@ -56,14 +62,17 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="input-group search-box">
-                    @if ($keyword)
-                        <input type="text" class="form-control search-input" placeholder="Search tutorials..." value="{{$keyword}}">
-                    @else
-                        <input type="text" class="form-control search-input" placeholder="Search tutorials..." value="">
-                    @endif
-                    <span class="input-group-btn">
-                        <button class="btn btn-default search-input" type="button"></button>
-                    </span>
+                    <form action="/search" method="POST" role="search">
+                        {{ csrf_field() }}
+                        @if ($keyword)
+                            <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="{{$keyword}}">
+                        @else
+                            <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="">
+                        @endif
+                        <span class="input-group-btn search-btn-wrap">
+                            <button class="btn btn-default search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                    </form>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div>
@@ -72,6 +81,85 @@
     @yield('content')
 
     <div class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="nav-footer">
+                        <br />
+                        <h2><i class="fa fa-link" aria-hidden="true"></i>&nbsp;Links</h2>
+                        <ul class="footer-links">
+                            <li class="nav-footer-item">
+                                <a class="no-link nav-item-foot-link" href="/">Home</a>
+                            </li>
+                            @foreach($menus as $key => $value)
+                                <li class="nav-footer-item">
+                                    <a class="no-link nav-item-foot-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    
+                    <div class="nav-footer">
+                        <br />
+                        <h2><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Contact Us</h2>
+                        
+                        <div class="nav-footer-item">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i> {{ $settings['contact_email'] }}
+                        </div>
+                        <div class="nav-footer-item">
+                            <i class="fa fa-skype" aria-hidden="true"></i> {{ $settings['skype_id'] }} 
+                        </div>
+                        <div class="nav-footer-item">
+                            <i class="fa fa-phone" aria-hidden="true"></i> {{ $settings['contact_phone'] }}
+                        </div>  
+                        <div class="nav-footer-item">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $settings['contact_address_1'] }}
+                        </div>
+                        <div class="nav-footer-item">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $settings['contact_address_2'] }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    
+                    <div class="nav-footer">
+                        <br />
+                        <h2><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;Social</h2>
+
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-square-o fa-stack-2x"></i>
+                          <i class="fa fa-facebook fa-stack-1x"></i>
+                        </span>
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-square-o fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x"></i>
+                        </span>
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-square-o fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x"></i>
+                        </span>
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-square-o fa-stack-2x"></i>
+                          <i class="fa fa-google-plus fa-stack-1x"></i>
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-12">
+                    &copy; deepdivetuts.com. All rights reserved
+                </div>
+            </div>
+            <br />
+        </div>
+        
     </div>
 </div>
 <script src="../assets/build/js/app_foot_web.min.js"></script>

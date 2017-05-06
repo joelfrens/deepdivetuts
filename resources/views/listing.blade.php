@@ -16,7 +16,7 @@
 		        </h4>
 	        </div>
 	        <div class="box-foot">
-	        	Posted by <span class="box-foot-author">Joel Fernandes</span> in <span class="box-foot-cat">{{ $article->category_name }}</span>
+	        	Posted by <span class="box-foot-author">{{$article->fullname}}</span> in <span class="box-foot-cat">{{ $article->category_name }}</span>
 				@foreach ($article->tags as $tag)
 					<span class="box-foot-tag">{{ $tag }}</span>
 				@endforeach

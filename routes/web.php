@@ -38,10 +38,14 @@ Route::group(['prefix' => 'admin', 'middleware' => CheckStatus::class], function
     
 });
 
+/** Article page */
 Route::get('{slug}', 'FrontController@show');
+Route::get('/page/{slug}', 'FrontController@getPage');
+
+/** To do */
 Route::get('/tag/{tag}', 'FrontController@getArticlesByTag');
 Route::get('/category/{category}', 'FrontController@getArticlesByCategory');
-Route::get('/search/{keyword}', 'FrontController@searchArticles');
+Route::post('/search', 'FrontController@searchArticles');
 
 
 
