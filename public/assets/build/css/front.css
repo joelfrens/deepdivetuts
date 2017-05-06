@@ -9461,6 +9461,13 @@ body {
 .footer-links {
   list-style: none;
 }
+.nav-footer-item {
+  color: #ffffff;
+  font-size: 15px;
+}
+.social-bg {
+  background-color: #38a0a0;
+}
 .form-control {
   height: 50px;
   font-size: 20px;
