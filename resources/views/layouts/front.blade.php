@@ -24,8 +24,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
     <script src="../assets/build/js/app_head.min.js"></script>
-<script src="http://prismjs.com/prism.js"></script>
-<link rel="stylesheet" type="text/css" href="http://prismjs.com/themes/prism.css">
+    <script src="../assets/src/js/libs/prism.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/src/css/prism.css">
 </head>
 
 <body>
