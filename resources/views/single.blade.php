@@ -5,11 +5,11 @@
     
     <div class="content-no-sidebar">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- big hori -->
+        <!-- Top big banner only home -->
         <ins class="adsbygoogle"
-             style="display:inline-block;width:728px;height:90px"
+             style="display:inline-block;width:970px;height:250px"
              data-ad-client="ca-pub-1723053501613692"
-             data-ad-slot="6490772110"></ins>
+             data-ad-slot="2411144113"></ins>
         <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
