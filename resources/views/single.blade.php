@@ -4,7 +4,15 @@
 <div class="container" style="min-height: 600px;">
     
     <div class="content-no-sidebar">
-        <br />
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- big hori -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-1723053501613692"
+             data-ad-slot="6490772110"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <h1 class="inline-block no-margin font-light">
         	{{ $article[0]->title }}
         </h1>
@@ -19,6 +27,11 @@
         	{!! $article[0]->content !!}
         	
         </div>
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-1723053501613692"
+             data-ad-slot="6490772110"></ins>
+        <script>
         <div id="disqus_thread"></div>
     </div>
 

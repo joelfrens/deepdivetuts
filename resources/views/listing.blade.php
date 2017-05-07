@@ -21,7 +21,17 @@
 					<span class="box-foot-tag">{{ $tag }}</span>
 				@endforeach
 			</div>
-			
+			@if ($key == 5)
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- big hori -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-1723053501613692"
+				     data-ad-slot="6490772110"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			@endif
 		</div>
 		<div class="sep-wrap">
 			<hr class="box-separator no-margin">
