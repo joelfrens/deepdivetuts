@@ -20,7 +20,8 @@ class CheckStatus
 
         $user = User::find($userId);
 
-        if ($user->status == 0 && $user->id > 1) {
+        // hack for now so that no other user who registers has access to admin section.
+        if ($user->status >= 0 && $user->id > 1) {
             echo "Sorry, Your account has been disabled.";
             exit;
         }
