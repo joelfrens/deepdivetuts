@@ -20,6 +20,7 @@ class FrontController extends Controller
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->where('articles.active', "=", 1)
                     ->paginate(15);
 
         $menus = $this->getMenus();
@@ -109,6 +110,19 @@ class FrontController extends Controller
                     ->where('articles.title', 'like', '%'.$keyword.'%')
                     ->orWhere('articles.content', 'like', '%'.$keyword.'%')
                     ->paginate(15);
+
+        /*
+        DB::table('users')
+            ->where('name', '=', 'John')
+            ->orWhere(function ($query) {
+                $query->where('votes', '>', 100)
+                      ->where('title', '<>', 'Admin');
+            })
+            ->get();
+
+        select * from users where name = 'John' or (votes > 100 and title <> 'Admin')
+    
+        */
 
         $menus = $this->getMenus();
         $categories = $this->getCategories();

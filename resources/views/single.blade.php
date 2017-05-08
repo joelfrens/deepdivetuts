@@ -4,16 +4,15 @@
 <div class="container" style="min-height: 600px;">
     
     <div class="content-no-sidebar">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Top big banner only home -->
+        <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <ins class="adsbygoogle"
              style="display:inline-block;width:970px;height:250px"
              data-ad-client="ca-pub-1723053501613692"
              data-ad-slot="2411144113"></ins>
         <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <h1 class="inline-block no-margin font-light">
+        </script>-->
+        <h1 class="inline-block no-margin">
         	{{ $article[0]->title }}
         </h1>
         <br />
