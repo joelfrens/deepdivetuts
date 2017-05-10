@@ -15,6 +15,7 @@
     <!--- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Miriam+Libre" rel="stylesheet">
 
     <!--- CSS Files here-->
     <link rel="stylesheet" href="../assets/build/css/front.css">
@@ -51,34 +52,38 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-lg-12">
                     <div class="text-center tag-line">Laravel, PHP and Linux tutorials..plus videos, free CMS, templates and much more...</div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>  
+    <div >
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="input-group search-box">
-                    <form action="/search" method="POST" role="search">
-                        {{ csrf_field() }}
-                        @if ($keyword)
-                            <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="{{$keyword}}">
-                        @else
-                            <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="">
-                        @endif
-                        <span class="input-group-btn search-btn-wrap">
-                            <button class="btn btn-default search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </span>
-                    </form>
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group search-box">
+                        <form action="/search" method="POST" role="search">
+                            {{ csrf_field() }}
+                            @if ($keyword)
+                                <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="{{$keyword}}">
+                            @else
+                                <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="">
+                            @endif
+                            <span class="input-group-btn search-btn-wrap">
+                                <button class="btn btn-default search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </span>
+                        </form>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div>
+           
+            
+            @yield('content')
         </div>
-    </div>   
-        
-    @yield('content')
+    </div>
 
     <div class="page-footer">
         <div class="container">

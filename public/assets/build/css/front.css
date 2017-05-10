@@ -9357,10 +9357,9 @@ body {
   position: relative;
 }
 .page-header {
-  margin: 0 0 20px 0;
+  margin: 0 0 0px 0;
   padding: 0;
   border: 0;
-  min-height: 200px;
   background-color: #4bc0c0;
   color: #ffffff;
   background: linear-gradient(-150deg, #00C1B6 0%, #136EB5 97%);
@@ -9397,7 +9396,7 @@ body {
   float: left;
 }
 .content-no-sidebar {
-  width: 100%;
+  width: 96%;
   vertical-align: top;
   min-height: 600px;
   float: left;
@@ -9475,6 +9474,12 @@ body {
   height: 50px;
   font-size: 20px;
 }
+.content-wrapper {
+  background-color: #fff;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 pre {
   padding: 0;
   border-radius: 4px;
@@ -9538,6 +9543,7 @@ h6,
   margin-top: 0;
   margin-bottom: 0.7em;
   line-height: 1.3em;
+  font-family: 'Miriam Libre', sans-serif;
 }
 h1 a,
 h2 a,
@@ -9730,7 +9736,7 @@ h6,
 }
 .box-content ul li {
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   margin-left: 20px;
 }
 .box-content img {
@@ -9769,11 +9775,14 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
 }
 ul li {
   font-family: 'Lato', sans-serif;
   font-size: 14px;
+}
+.title-margin {
+  margin-top: 20px;
 }
 .hashtags {
   font-size: 42px;
@@ -9796,7 +9805,6 @@ ul li {
 .logo-text {
   padding: 20px 20px 20px 0;
   display: inline-block;
-  min-height: 100px;
   font-size: 20px;
 }
 .tag-line {
