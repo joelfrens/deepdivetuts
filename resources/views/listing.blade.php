@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('content')
-<div class="container" style="min-height: 600px;">
+<div class="container title-margin" style="min-height: 600px;">
     
     <div class="content-no-sidebar">
     	@foreach ($articles as $key => $article)
@@ -22,15 +22,17 @@
 				@endforeach
 			</div>
 			@if ($key == 5)
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Top big banner only home -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:970px;height:250px"
-				     data-ad-client="ca-pub-1723053501613692"
-				     data-ad-slot="2411144113"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
+				@if ($settings['server_env'] != 'local')
+		            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		            <!-- 970 hori -->
+		            <ins class="adsbygoogle"
+		                 style="display:inline-block;width:970px;height:90px"
+		                 data-ad-client="ca-pub-1723053501613692"
+		                 data-ad-slot="7392095718"></ins>
+		            <script>
+		            (adsbygoogle = window.adsbygoogle || []).push({});
+		            </script>
+		        @endif
 			@endif
 		</div>
 		<div class="sep-wrap">
