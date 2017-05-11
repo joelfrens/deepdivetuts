@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <span class="logo-text">
-                        <a href="{{ $settings['site_url'] }}" class="no-link c-white" style="font-family: 'Titan One', cursive;">DeepDiveTuts</a>
+                        <a href="{{ $settings['site_url'] }}" class="no-link c-white">DeepDiveTuts</a>
                     </span>
                 </div>
                 <div class="col-lg-10">
@@ -91,7 +91,7 @@
                 <div class="col-xs-4">
                     <div class="nav-footer">
                         <br />
-                        <h2><i class="fa fa-link" aria-hidden="true"></i>&nbsp;Links</h2>
+                        <h2>Links</h2>
                         <ul class="footer-links">
                             <li class="nav-footer-item">
                                 <a class="no-link nav-item-foot-link" href="/">Home</a>
@@ -110,7 +110,7 @@
                     
                     <div class="nav-footer">
                         <br />
-                        <h2><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Contact Us</h2>
+                        <h2>Contact Us</h2>
                         
                         <div class="nav-footer-item">
                             <i class="fa fa-envelope-o" aria-hidden="true"></i> {{ $settings['contact_email'] }}
@@ -134,7 +134,7 @@
                     
                     <div class="nav-footer">
                         <br />
-                        <h2><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;Social</h2>
+                        <h2>Social</h2>
 
                         <span class="fa-stack fa-lg">
                           <i class="fa fa-square-o fa-stack-2x"></i>

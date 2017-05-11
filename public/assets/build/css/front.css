@@ -9360,13 +9360,14 @@ body {
   margin: 0 0 0px 0;
   padding: 0;
   border: 0;
-  background-color: #4bc0c0;
-  color: #ffffff;
-  background: linear-gradient(-150deg, #00C1B6 0%, #136EB5 97%);
+  background-color: #487977;
 }
 .page-footer {
   min-height: 30px;
-  background-color: #4bc0c0;
+  background-color: #333333;
+}
+.page-footer h2 {
+  color: #ffffff;
 }
 /** Bootstrap overides **/
 .dropdown-menu {
@@ -9431,7 +9432,7 @@ body {
 }
 .pagination > li > a,
 .pagination > li > span {
-  border: 1px solid #4bc0c0;
+  border: 1px solid #487977;
   border-radius: 0;
 }
 .pagination > .active > a,
@@ -9441,12 +9442,12 @@ body {
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   color: #ffffff;
-  background-color: #4bc0c0;
-  border-color: #4bc0c0;
+  background-color: #487977;
+  border-color: #487977;
 }
 .pagination > li > a,
 .pagination > li > span {
-  color: #4bc0c0;
+  color: #487977;
 }
 .pagination > li:last-child > a,
 .pagination > li:last-child > span,
@@ -9458,17 +9459,20 @@ body {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #38a0a0;
+  color: #355958;
 }
 .footer-links {
   list-style: none;
+}
+.fa-stack {
+  color: #ffffff;
 }
 .nav-footer-item {
   color: #ffffff;
   font-size: 15px;
 }
 .social-bg {
-  background-color: #38a0a0;
+  background-color: #355958;
 }
 .form-control {
   height: 50px;
@@ -9746,14 +9750,13 @@ h6,
   margin-bottom: 20px;
 }
 .spl {
-  border: 1px solid #cae0cf;
   background: #ebebeb;
-  color: #5e936a;
+  color: #ee9a03;
   border-radius: 6px;
-  padding: 1px;
+  padding: 3px;
   font-family: 'Lato', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
 }
 code[class*="language-"],
 pre[class*="language-"] {
@@ -9807,6 +9810,10 @@ ul li {
   display: inline-block;
   font-size: 20px;
 }
+.logo-text a {
+  font-family: 'Miriam Libre', sans-serif;
+  font-size: 25px;
+}
 .tag-line {
   font-size: 26px;
   font-weight: 400;
@@ -9848,6 +9855,6 @@ ul li {
   color: #1f2b45;
 }
 .c-theme-primary {
-  color: #4bc0c0;
+  color: #487977;
 }
 /*# sourceMappingURL=front.less.map */

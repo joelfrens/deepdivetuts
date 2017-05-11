@@ -40,13 +40,16 @@ body {
 	padding: 0;
 	border: 0;
 	background-color: @theme-primary;
-	color: @theme-white;
-	background:  linear-gradient(-150deg, #00C1B6 0%, #136EB5 97%);
+	
     
 }
 .page-footer {
 	min-height: 30px;
-	background-color: @theme-primary;
+	background-color: @theme-footer;
+}
+
+.page-footer h2 {
+	color: @theme-white;
 }
 
 /** Bootstrap overides **/
@@ -137,6 +140,10 @@ body {
 
 .footer-links {
 	list-style: none;
+}
+
+.fa-stack {
+	color: @theme-white;
 }
 
 .nav-footer-item {
