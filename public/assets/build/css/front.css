@@ -9746,6 +9746,19 @@ h6,
   background-color: #ffd89e;
   border: 1px solid #ffd89e;
 }
+.box-foot-tag-footer {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  padding: 2px 5px;
+  font-size: 10px;
+  color: #ffffff;
+  margin-top: 10px;
+}
+.box-foot-tag-footer:hover {
+  background-color: #ffd89e;
+  border: 1px solid #ffd89e;
+}
 .like-box {
   color: #ff5252;
 }

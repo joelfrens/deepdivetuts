@@ -176,7 +176,13 @@
                 </div>
 
                 <div class="col-xs-4">
-                    
+                    <br />
+                    <h2 class="footer-link-title">Tags</h2>
+                    <ul class="footer-links">
+                        @foreach($tags as $value)
+                            <span class="box-foot-tag-footer"><a href="{{ $settings['site_url'] }}tag/{{$value->slug}}">{{ $value->name }}</a></span>
+                        @endforeach
+                    </ul>
                 </div>
 
                 <div class="col-xs-4">
@@ -187,7 +193,7 @@
             <br />
             <div class="row">
                 <div class="col-xs-12 copyright">
-                    &copy; deepdivetuts.com. All rights reserved
+                    &copy; deepdivetuts.com. All rights reserved.
                 </div>
             </div>
             <br />
