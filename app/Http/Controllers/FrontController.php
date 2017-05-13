@@ -62,6 +62,7 @@ class FrontController extends Controller
             'article' => $articles, 
             'menus' => $menus,
             'categories' => $categories,
+            'tags' => $tags,
             'keyword' => '',
             'settings' => $settings
         ]);
@@ -150,13 +151,14 @@ class FrontController extends Controller
                     ->where('pages.slug', "=", $slug)
                     ->get();
 
+        $tags = $this->getTags();
         $settings = Setting::pluck('value','code');
-
         $categories = $this->getCategories();
         
         return view('page',[
             'page' => $page, 
             'menus' => $menus,
+            'tags' => $tags,
             'keyword' => '', 
             'settings' => $settings,
             'categories' => $categories,
@@ -176,7 +178,8 @@ class FrontController extends Controller
     }
 
     public function getTags() {
-        $tags = \App\Tag::pluck('name','id');
+        $tags = DB::table('tags')
+                    ->get();
         
         return $tags;
     }
@@ -218,7 +221,28 @@ class FrontController extends Controller
 
     /* TO DO */
     public function getArticlesByTag($tag) {
+        $articles = DB::table('articles')
+                    ->join('categories', 'articles.category_id', '=', 'categories.id')
+                    ->join('users', 'articles.user_id', '=', 'users.id')
+                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->where('categories.slug', '=', $category)
+                    ->paginate(15);
+
+        $menus = $this->getMenus();
+        $categories = $this->getCategories();
+        $tags = $this->getTags();
+        $settings = $this->getSettings();
         
+        $articles = $this->attachTagsToArticles($articles);
+
+        return view('listing', [
+            'articles' => $articles,
+            'categories' => $categories,
+            'tags' => $tags,
+            'menus' => $menus,
+            'keyword' => '',
+            'settings' => $settings
+        ]);
     }
 
     
