@@ -9506,6 +9506,11 @@ a.footer-link-item {
   border-bottom: 1px solid #585b5d;
   padding-bottom: 20px;
 }
+.sharethis-inline-share-buttons {
+  background-color: #f7f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
 pre {
   padding: 0;
   border-radius: 4px;
