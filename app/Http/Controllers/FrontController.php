@@ -61,6 +61,7 @@ class FrontController extends Controller
         return view('single',[
             'article' => $articles, 
             'menus' => $menus,
+            'categories' => $categories,
             'keyword' => '',
             'settings' => $settings
         ]);
@@ -174,7 +175,8 @@ class FrontController extends Controller
     }
 
     public function getCategories() {
-        $categories = \App\Category::pluck('name','id');
+        $categories = DB::table('categories')
+                    ->get();
 
         return $categories;
     }
