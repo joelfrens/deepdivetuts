@@ -42,16 +42,22 @@
                 <div class="col-lg-10">
                     <div class="nav-top-head">
                         <span class="nav-top-item">
-                            <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
+                            <a class="nav-item-link" href="{{ $settings['site_url'] }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
                         </span>
                         @foreach($menus as $key => $value)
                             <span class="nav-top-item">
-                                <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                                <a class="nav-item-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
                             </span>
                         @endforeach
                     </div>
                 </div>
+                
             </div>
+            @foreach($categories as $key => $value)
+                <span class="nav-top-item" style="margin-right: 4px">
+                    <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}category/{{$value->slug}}" style="background-color: #fff;color: #333;display: inline-block;min-width: 100px;padding:10px;border-top:4px solid #8bc34a">{{ $value->name }}</a>
+                </span>
+            @endforeach
             <!--<div class="row">
                 <div class="col-lg-12">
                     <div class="text-center tag-line">Laravel, PHP and Linux tutorials..plus videos, free CMS, templates and much more...</div>
@@ -87,18 +93,18 @@
 
     <div class="page-footer">
         <div class="container">
-            <div class="row">
+            <div class="row border-bottom">
                 <div class="col-xs-4">
                     <div class="nav-footer">
                         <br />
                         <h2>Links</h2>
                         <ul class="footer-links">
                             <li class="nav-footer-item">
-                                <a class="no-link nav-item-foot-link" href="/">Home</a>
+                                <a class="no-link nav-item-foot-link footer-link-item" href="/">Home</a>
                             </li>
                             @foreach($menus as $key => $value)
                                 <li class="nav-footer-item">
-                                    <a class="no-link nav-item-foot-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                                    <a class="nav-item-foot-link footer-link-item" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
                                 </li>
                             @endforeach
 
@@ -112,19 +118,19 @@
                         <br />
                         <h2>Contact Us</h2>
                         
-                        <div class="nav-footer-item">
+                        <div class="nav-footer-item footer-link-item">
                             <i class="fa fa-envelope-o" aria-hidden="true"></i> {{ $settings['contact_email'] }}
                         </div>
-                        <div class="nav-footer-item">
+                        <div class="nav-footer-item footer-link-item">
                             <i class="fa fa-skype" aria-hidden="true"></i> {{ $settings['skype_id'] }} 
                         </div>
-                        <div class="nav-footer-item">
+                        <div class="nav-footer-item footer-link-item">
                             <i class="fa fa-phone" aria-hidden="true"></i> {{ $settings['contact_phone'] }}
                         </div>  
-                        <div class="nav-footer-item">
+                        <div class="nav-footer-item footer-link-item">
                             <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $settings['contact_address_1'] }}
                         </div>
-                        <div class="nav-footer-item">
+                        <div class="nav-footer-item footer-link-item">
                             <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $settings['contact_address_2'] }}
                         </div>
                     </div>
@@ -156,9 +162,31 @@
                     </div>
                 </div>
             </div>
+            <div class="row border-bottom">
+                <div class="col-xs-4">
+                    <br />
+                    <h2 class="footer-link-title">Categories</h2>
+                    <ul class="footer-links">
+                        @foreach($categories as $key => $value)
+                            <li class="nav-footer-item">
+                                <a class="nav-item-link footer-link-item" href="{{ $settings['site_url'] }}category/{{$value->slug}}">{{ $value->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <div class="col-xs-4">
+                    
+                </div>
+
+                <div class="col-xs-4">
+                    
+                    
+                </div>
+            </div>
             <br />
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12 copyright">
                     &copy; deepdivetuts.com. All rights reserved
                 </div>
             </div>
@@ -178,5 +206,6 @@
   ga('send', 'pageview');
 
 </script>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=59160efbc1797300114e3ed1&product=inline-share-buttons"></script>
 </body>
 </html>

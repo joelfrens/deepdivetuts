@@ -20,6 +20,7 @@
             </script>
         @endif
         <br />
+        
         <div class="box-foot">
         	Posted by <span class="box-foot-author">{{$article[0]->fullname}}</span> in <span class="box-foot-cat">{{$article[0]->category_name}}</span>
 			@foreach ($article[0]->tags as $tag)
@@ -30,7 +31,7 @@
         	{!! $article[0]->content !!}
         	
         </div>
-        
+        <div class="sharethis-inline-share-buttons"></div>
         <div id="disqus_thread"></div>
 
         @if ($settings['server_env'] != 'local')

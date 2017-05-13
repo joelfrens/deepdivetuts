@@ -9344,7 +9344,7 @@ body {
   padding: 0;
   color: #263238;
   font-size: 13px;
-  background-color: #FAFAFA;
+  background-color: #c5c5c5;
 }
 .container {
   width: 1100px;
@@ -9360,7 +9360,7 @@ body {
   margin: 0 0 0px 0;
   padding: 0;
   border: 0;
-  background-color: #487977;
+  background-color: #1d4240;
 }
 .page-footer {
   min-height: 30px;
@@ -9432,7 +9432,7 @@ body {
 }
 .pagination > li > a,
 .pagination > li > span {
-  border: 1px solid #487977;
+  border: 1px solid #1d4240;
   border-radius: 0;
 }
 .pagination > .active > a,
@@ -9442,12 +9442,12 @@ body {
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   color: #ffffff;
-  background-color: #487977;
-  border-color: #487977;
+  background-color: #1d4240;
+  border-color: #1d4240;
 }
 .pagination > li > a,
 .pagination > li > span {
-  color: #487977;
+  color: #1d4240;
 }
 .pagination > li:last-child > a,
 .pagination > li:last-child > span,
@@ -9459,7 +9459,7 @@ body {
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #355958;
+  color: #0d1f1e;
 }
 .footer-links {
   list-style: none;
@@ -9472,7 +9472,7 @@ body {
   font-size: 15px;
 }
 .social-bg {
-  background-color: #355958;
+  background-color: #0d1f1e;
 }
 .form-control {
   height: 50px;
@@ -9482,6 +9482,28 @@ body {
   background-color: #fff;
   padding: 10px;
   padding-top: 20px;
+  padding-bottom: 20px;
+}
+.copyright {
+  color: #a9a9a9;
+}
+.footer-link-title {
+  font-weight: 100;
+  color: #a9a9a9;
+  font-family: 'Miriam Libre', sans-serif;
+}
+a.footer-link-item {
+  font-weight: 100;
+  color: #a9a9a9;
+  font-family: 'Miriam Libre', sans-serif;
+}
+.footer-link-item {
+  font-weight: 100;
+  color: #a9a9a9;
+  font-family: 'Miriam Libre', sans-serif;
+}
+.border-bottom {
+  border-bottom: 1px solid #585b5d;
   padding-bottom: 20px;
 }
 pre {
@@ -9829,8 +9851,6 @@ ul li {
   cursor: pointer;
 }
 .nav-item-link:hover {
-  background-color: #fff;
-  border-radius: 5px;
   cursor: pointer;
 }
 .nav-item-foot-link {
@@ -9855,6 +9875,6 @@ ul li {
   color: #1f2b45;
 }
 .c-theme-primary {
-  color: #487977;
+  color: #1d4240;
 }
 /*# sourceMappingURL=front.less.map */
