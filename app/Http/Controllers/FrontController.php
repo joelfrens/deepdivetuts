@@ -151,9 +151,16 @@ class FrontController extends Controller
                     ->get();
 
         $settings = Setting::pluck('value','code');
+
+        $categories = $this->getCategories();
         
-        return view('page',['page' => $page, 'menus' => $menus,
-            'keyword' => '', 'settings' => $settings]);
+        return view('page',[
+            'page' => $page, 
+            'menus' => $menus,
+            'keyword' => '', 
+            'settings' => $settings,
+            'categories' => $categories,
+        ]);
     }
 
     public function getMenus() {
