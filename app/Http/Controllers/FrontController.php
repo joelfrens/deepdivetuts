@@ -30,7 +30,7 @@ class FrontController extends Controller
         
         $articles = $this->attachTagsToArticles($articles);
 
-        return view('listing', [
+        return view('themes.default.listing', [
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
@@ -38,8 +38,6 @@ class FrontController extends Controller
             'keyword' => '',
             'settings' => $settings
         ]);
-
-    	
     }
 
     public function show($slug){
@@ -58,7 +56,7 @@ class FrontController extends Controller
         
         $articles = $this->attachTagsToArticles($articles);
 
-        return view('single',[
+        return view('themes.default.single-right',[
             'article' => $articles, 
             'menus' => $menus,
             'categories' => $categories,
@@ -84,7 +82,7 @@ class FrontController extends Controller
         
         $articles = $this->attachTagsToArticles($articles);
 
-        return view('listing', [
+        return view('themes.default.listing', [
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
@@ -93,8 +91,6 @@ class FrontController extends Controller
             'settings' => $settings
         ]);
     }
-
-    
 
     public function searchArticles(Request $request) {
         
@@ -113,19 +109,6 @@ class FrontController extends Controller
                     ->orWhere('articles.content', 'like', '%'.$keyword.'%')
                     ->paginate(15);
 
-        /*
-        DB::table('users')
-            ->where('name', '=', 'John')
-            ->orWhere(function ($query) {
-                $query->where('votes', '>', 100)
-                      ->where('title', '<>', 'Admin');
-            })
-            ->get();
-
-        select * from users where name = 'John' or (votes > 100 and title <> 'Admin')
-    
-        */
-
         $menus = $this->getMenus();
         $categories = $this->getCategories();
         $tags = $this->getTags();
@@ -133,7 +116,7 @@ class FrontController extends Controller
 
         $articles = $this->attachTagsToArticles($articles);
 
-        return view('listing', [
+        return view('themes.default.listing', [
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
@@ -155,7 +138,7 @@ class FrontController extends Controller
         $settings = Setting::pluck('value','code');
         $categories = $this->getCategories();
         
-        return view('page',[
+        return view('themes.default.page',[
             'page' => $page, 
             'menus' => $menus,
             'tags' => $tags,
@@ -200,7 +183,7 @@ class FrontController extends Controller
             $selectedtags = array();
 
             foreach ($item['tag'] as $tag) {
-                $selectedtags[] = $tag['name'];
+                $selectedtags[$tag['slug']] = $tag['name'];
             }
             $article->tags = $selectedtags;
 
@@ -209,23 +192,14 @@ class FrontController extends Controller
         return $articles;
     }
 
-    /* TO DO */
-    public function getArchivesByMonth($month) {
-    	
-    }
-
-    /* TO DO */
-    public function getMostViewedArticles() {
-
-    }
-
-    /* TO DO */
     public function getArticlesByTag($tag) {
         $articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
+                    ->join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+                    ->join('tags', 'article_tag.tag_id', '=', 'tags.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
-                    ->where('categories.slug', '=', $category)
+                    ->where('tags.slug', '=', $tag)
                     ->paginate(15);
 
         $menus = $this->getMenus();
@@ -235,7 +209,7 @@ class FrontController extends Controller
         
         $articles = $this->attachTagsToArticles($articles);
 
-        return view('listing', [
+        return view('themes.default.listing', [
             'articles' => $articles,
             'categories' => $categories,
             'tags' => $tags,
@@ -245,5 +219,14 @@ class FrontController extends Controller
         ]);
     }
 
+    /* TO DO */
+    public function getArchivesByMonth($month) {
+        
+    }
+
+    /* TO DO */
+    public function getMostViewedArticles() {
+
+    }
     
 }

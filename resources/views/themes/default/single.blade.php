@@ -23,8 +23,8 @@
         
         <div class="box-foot">
         	Posted by <span class="box-foot-author">{{$article[0]->fullname}}</span> in <span class="box-foot-cat">{{$article[0]->category_name}}</span>
-			@foreach ($article[0]->tags as $tag)
-				<span class="box-foot-tag">{{ $tag }}</span>
+			@foreach ($article[0]->tags as $key => $tag)
+				<span class="box-foot-tag"><a href="{{ $settings['site_url'] }}tag/{{$key}}">{{ $tag }}</a></span>
 			@endforeach
 		</div>
         <div class="box-content">
