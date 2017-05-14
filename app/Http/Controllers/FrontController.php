@@ -56,7 +56,7 @@ class FrontController extends Controller
         
         $articles = $this->attachTagsToArticles($articles);
 
-        return view('themes.default.single-right',[
+        return view('themes.default.single',[
             'article' => $articles, 
             'menus' => $menus,
             'categories' => $categories,
