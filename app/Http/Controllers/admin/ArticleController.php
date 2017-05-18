@@ -36,6 +36,7 @@ class ArticleController extends Controller
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->orderBy('id','desc')
                     ->paginate(15);
 
         // Get all categories
@@ -125,6 +126,7 @@ class ArticleController extends Controller
             'content' => $request->content,
             'category_id' => $request->category,
             'active' => $request->status,
+            'show_comments' => $request->comments,
             'meta_keywords' => 'test',
             'image' => ''
         ]);
@@ -227,6 +229,7 @@ class ArticleController extends Controller
                 'content' => $request->content,
                 'category_id' => $request->category_id,
                 'active' => $request->status,
+                'show_comments' => $request->comments,
                 'meta_keywords' => 'test'
             ]);
 

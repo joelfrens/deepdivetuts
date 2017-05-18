@@ -93,6 +93,24 @@
 			                </div>
 
 			                <div class="form-group">
+								{{ Form::label('comments', 'Comments') }}
+
+								<div class="custom-radio-btns mg-bm-xs">
+					                @if ($article->show_comments == '1')
+				                        {{ Form::radio('comments', '1', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'comments-yes']) }} 
+					                    <label for="comments-yes" class="radio-custom-label">Yes</label>
+					                    {{ Form::radio('comments', '0', false, ['class' => 'radio-custom', 'id' => 'comments-no']) }} 
+					                    <label for="comments-no" class="radio-custom-label">No</label>
+					                @else
+					                    {{ Form::radio('comments', '1', false, ['class' => 'radio-custom', 'id' => 'comments-yes']) }} 
+					                    <label for="comments-yes" class="radio-custom-label">Yes</label>
+					                    {{ Form::radio('comments', '0', true, ['checked' => 'checked', 'class' => 'radio-custom', 'id' => 'comments-no']) }}
+					                    <label for="comments-no" class="radio-custom-label">No</label>
+					                @endif    
+				                </div>
+			                </div>
+
+			                <div class="form-group">
 								@foreach ($images as $key => $img)
 									{!! Html::image('uploads/'.$img->image, 'alt', array( 'width' => 70, 'height' => '' )) !!}
 								@endforeach
