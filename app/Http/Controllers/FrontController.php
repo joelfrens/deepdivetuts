@@ -21,6 +21,7 @@ class FrontController extends Controller
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('articles.active', "=", 1)
+                    ->orderBy('id','desc')
                     ->paginate(15);
 
         $menus = $this->getMenus();
@@ -49,6 +50,9 @@ class FrontController extends Controller
                     ->where('articles.slug', "=", $slug)
                     ->get();
     	
+        // Update count
+        $this->updateArticleViewCount($slug);
+
         $menus = $this->getMenus();
         $categories = $this->getCategories();
         $tags = $this->getTags();
@@ -73,6 +77,7 @@ class FrontController extends Controller
                     ->join('users', 'articles.user_id', '=', 'users.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('categories.slug', '=', $category)
+                    ->orderBy('id','desc')
                     ->paginate(15);
 
         $menus = $this->getMenus();
@@ -107,6 +112,7 @@ class FrontController extends Controller
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('articles.title', 'like', '%'.$keyword.'%')
                     ->orWhere('articles.content', 'like', '%'.$keyword.'%')
+                    ->orderBy('id','desc')
                     ->paginate(15);
 
         $menus = $this->getMenus();
@@ -200,6 +206,7 @@ class FrontController extends Controller
                     ->join('tags', 'article_tag.tag_id', '=', 'tags.id')
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('tags.slug', '=', $tag)
+                    ->orderBy('id','desc')
                     ->paginate(15);
 
         $menus = $this->getMenus();
@@ -217,6 +224,10 @@ class FrontController extends Controller
             'keyword' => '',
             'settings' => $settings
         ]);
+    }
+
+    public function updateArticleViewCount($slug) {
+        $count = DB::table('articles')->where('slug', $slug)->increment('viewcount');
     }
 
     /* TO DO */

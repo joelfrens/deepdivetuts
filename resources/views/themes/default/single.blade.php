@@ -32,7 +32,10 @@
         	
         </div>
         <div class="sharethis-inline-share-buttons"></div>
-        <div id="disqus_thread"></div>
+        
+        @if ($article[0]->show_comments == 1)
+            <div id="disqus_thread"></div>
+        @endif
 
         @if ($settings['server_env'] != 'local')
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -58,11 +58,6 @@
                     <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}category/{{$value->slug}}" style="background-color: #fff;color: #333;display: inline-block;min-width: 100px;padding:10px;border-top:4px solid #8bc34a">{{ $value->name }}</a>
                 </span>
             @endforeach
-            <!--<div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center tag-line">Laravel, PHP and Linux tutorials..plus videos, free CMS, templates and much more...</div>
-                </div>
-            </div>-->
         </div>
     </div>  
     <div >
@@ -82,12 +77,12 @@
                                 <button class="btn btn-default search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </span>
                         </form>
-                    </div><!-- /input-group -->
-                </div><!-- /.col-lg-6 -->
+                    </div>
+                </div>
             </div>
-           
             
             @yield('content')
+        
         </div>
     </div>
 
@@ -100,11 +95,13 @@
                         <h2>Links</h2>
                         <ul class="footer-links">
                             <li class="nav-footer-item">
-                                <a class="no-link nav-item-foot-link footer-link-item" href="/">Home</a>
+                                <a class="nav-item-foot-link footer-link-item" href="/">Home</a>
                             </li>
                             @foreach($menus as $key => $value)
                                 <li class="nav-footer-item">
-                                    <a class="nav-item-foot-link footer-link-item" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                                    <a class="nav-item-foot-link footer-link-item" href="{{ $settings['site_url'] }}page{{$value->link}}">
+                                        {{ $value->title }}
+                                    </a>
                                 </li>
                             @endforeach
 
@@ -180,14 +177,15 @@
                     <h2 class="footer-link-title">Tags</h2>
                     <ul class="footer-links">
                         @foreach($tags as $value)
-                            <span class="box-foot-tag-footer"><a href="{{ $settings['site_url'] }}tag/{{$value->slug}}">{{ $value->name }}</a></span>
+                            <span class="box-foot-tag-footer">
+                                <a href="{{ $settings['site_url'] }}tag/{{$value->slug}}">{{ $value->name }}</a>
+                            </span>
                         @endforeach
                     </ul>
                 </div>
 
                 <div class="col-xs-4">
-                    
-                    
+                   <!-- empty section in the footer --> 
                 </div>
             </div>
             <br />

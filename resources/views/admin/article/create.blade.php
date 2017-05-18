@@ -83,6 +83,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            {!! Form::label('Comments', 'Comments') !!}
+                            <div class="custom-radio-btns mg-bm-xs">
+                                {!! Form::radio('comments',1, true, ['class' => 'radio-custom', 'id' => 'comments-yes']) !!}
+                                {!! Form::label('comments-yes', 'Active', ['class' => 'radio-custom-label']) !!}
+
+                                {!! Form::radio('comments',0, true, ['class' => 'radio-custom', 'id' => 'comments-no']) !!}
+                                {!! Form::label('comments-no', 'Disabled', ['class' => 'radio-custom-label']) !!}
+                            </div>
+                        </div>
+
                         {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
                     </div>
