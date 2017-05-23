@@ -9344,7 +9344,7 @@ body {
   padding: 0;
   color: #263238;
   font-size: 13px;
-  background-color: #c5c5c5;
+  background-color: #ffffff;
 }
 .container {
   width: 1100px;
@@ -9483,6 +9483,7 @@ body {
   padding: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
+  box-shadow: 0 0 5px #888;
 }
 .copyright {
   color: #a9a9a9;

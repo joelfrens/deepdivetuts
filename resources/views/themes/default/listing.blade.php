@@ -4,7 +4,7 @@
 <div class="container title-margin" style="min-height: 600px;">
     
     <div class="content-no-sidebar">
-    	@foreach ($articles as $key => $article)
+    	@foreach ($articles as $index => $article)
 
         <div class="box-wrapper">
 			<div class="box-head">
@@ -21,9 +21,8 @@
 					<span class="box-foot-tag"><a href="{{ $settings['site_url'] }}tag/{{$key}}">{{ $tag }}</a></span>
 				@endforeach
 			</div>
-			@if ($key == 5)
-				@if ($settings['server_env'] != 'local')
-		            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			@if ($index % 5 == 0 and $index != 0 and $settings['server_env'] != 'local')
+				    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		            <!-- 970 hori -->
 		            <ins class="adsbygoogle"
 		                 style="display:inline-block;width:970px;height:90px"
@@ -32,8 +31,7 @@
 		            <script>
 		            (adsbygoogle = window.adsbygoogle || []).push({});
 		            </script>
-		        @endif
-			@endif
+		    @endif
 		</div>
 		<div class="sep-wrap">
 			<hr class="box-separator no-margin">
