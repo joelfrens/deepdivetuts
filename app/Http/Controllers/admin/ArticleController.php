@@ -197,6 +197,7 @@ class ArticleController extends Controller
 
     }
 
+    
     /**
      * Updates articles
      *
