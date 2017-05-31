@@ -49,6 +49,9 @@ class FrontController extends Controller
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('articles.slug', "=", $slug)
                     ->get();
+
+        // Get images
+        $images = \App\article_images::where('article_id', $articles[0]->id)->get();
     	
         // Update count
         $this->updateArticleViewCount($slug);
@@ -57,16 +60,19 @@ class FrontController extends Controller
         $categories = $this->getCategories();
         $tags = $this->getTags();
         $settings = $this->getSettings();
+        $mostViewed = $this->getMostViewedArticles();
         
         $articles = $this->attachTagsToArticles($articles);
 
-        return view('themes.default.single',[
+        return view('themes.default.single-right',[
             'article' => $articles, 
             'menus' => $menus,
             'categories' => $categories,
             'tags' => $tags,
             'keyword' => '',
-            'settings' => $settings
+            'settings' => $settings,
+            'images' => $images,
+            'mostViewed' => $mostViewed
         ]);
     }
 
@@ -184,7 +190,7 @@ class FrontController extends Controller
 
         foreach ($articles as $article) {
             
-            $item = \App\Article::with('tag')->findORFail($article->id);
+            $item = Article::with('tag')->findORFail($article->id);
                         
             $selectedtags = array();
 
@@ -237,6 +243,12 @@ class FrontController extends Controller
 
     /* TO DO */
     public function getMostViewedArticles() {
+        $articles = DB::table('articles')
+                    ->where('articles.active', "=", 1)
+                    ->orderBy('viewcount','desc')
+                    ->paginate(5);
+
+        return $articles;
 
     }
     

@@ -9424,7 +9424,6 @@ body {
 .side-panel-one {
   width: 25%;
   vertical-align: top;
-  background-color: teal;
   min-height: 600px;
 }
 .pagination {
@@ -9511,6 +9510,25 @@ a.footer-link-item {
   background-color: #f7f5f5;
   padding: 10px;
   border-radius: 5px;
+}
+.leftmargin20 {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.h4bg {
+  border-bottom: 5px solid #ebebeb;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.mostviewed li {
+  margin-left: 5px;
+  font-family: 'Lato', sans-serif;
+  padding-bottom: 15px;
+  font-size: 17px;
+  list-style: none;
+}
+.featured-image {
+  margin-top: 20px;
 }
 pre {
   padding: 0;
