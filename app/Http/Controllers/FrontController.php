@@ -61,6 +61,7 @@ class FrontController extends Controller
         $tags = $this->getTags();
         $settings = $this->getSettings();
         $mostViewed = $this->getMostViewedArticles();
+        $relatedArticles = $this->getRelatedArticles($articles[0]->category_id, $articles[0]->id);
         
         $articles = $this->attachTagsToArticles($articles);
 
@@ -72,7 +73,8 @@ class FrontController extends Controller
             'keyword' => '',
             'settings' => $settings,
             'images' => $images,
-            'mostViewed' => $mostViewed
+            'mostViewed' => $mostViewed,
+            'relatedArticles' => $relatedArticles
         ]);
     }
 
@@ -241,10 +243,21 @@ class FrontController extends Controller
         
     }
 
-    /* TO DO */
     public function getMostViewedArticles() {
         $articles = DB::table('articles')
                     ->where('articles.active', "=", 1)
+                    ->orderBy('viewcount','desc')
+                    ->paginate(5);
+
+        return $articles;
+
+    }
+
+    public function getRelatedArticles($categoryId, $articleId) {
+        $articles = DB::table('articles')
+                    ->where('articles.active', "=", 1)
+                    ->Where('articles.category_id', '=', $categoryId)
+                    ->Where('articles.id', '!=', $articleId)
                     ->orderBy('viewcount','desc')
                     ->paginate(5);
 

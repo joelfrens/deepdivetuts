@@ -43,6 +43,12 @@
 
         <div class="top-articles">
             <h4 class="h4bg">Related Articles</h4>
+
+            <ul class="mostviewed">
+                @foreach ($relatedArticles as $index => $r)
+                    <li><a href="/{{$r->slug}}">{{$r->title}}</a></li>
+                @endforeach
+            </ul>
         </div>
 
         
