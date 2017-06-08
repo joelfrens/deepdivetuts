@@ -23,7 +23,8 @@ body {
 }
 
 .container {
-    width: 1100px;
+    width: 100%!important;
+    max-width: 1200px !important;
 }
 
 .border-all {
@@ -39,13 +40,12 @@ body {
 	margin: 0 0 0px 0;
 	padding: 0;
 	border: 0;
-	background-color: @theme-primary;
-	
-    
 }
+
 .page-footer {
 	min-height: 30px;
-	background-color: @theme-footer;
+	border-top:5px dashed #888;
+	margin-top:20px;
 }
 
 .page-footer h2 {
@@ -81,6 +81,7 @@ body {
 	vertical-align: top;
 	min-height: 600px;
 	float: left;
+	padding:10px;
 }
 
 .content-both {
@@ -147,7 +148,7 @@ body {
 
 .nav-footer-item {
 	color: @theme-white;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 .social-bg {
@@ -164,7 +165,9 @@ body {
 	padding:10px;
 	padding-top:20px;
 	padding-bottom: 20px;
-	box-shadow: 0 0 5px #888;
+	box-shadow: 0 0 3px #dcdcdc;
+	margin-top:20px;
+	margin-bottom: 20px;
 }
 
 .copyright {
@@ -221,6 +224,14 @@ a.footer-link-item {
 
 .featured-image {
 	margin-top: 20px;
+}
+
+.padding-heading {
+	padding:10px;
+}
+
+.paddingtop10 {
+	padding-top: 10px;
 }
 
 pre {

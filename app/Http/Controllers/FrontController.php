@@ -19,10 +19,14 @@ class FrontController extends Controller
     	$articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
-                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->leftJoin('article_images', 'articles.id', '=', 'article_images.article_id')
+                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname','article_images.image','articles.created_at as date_created')
                     ->where('articles.active', "=", 1)
                     ->orderBy('id','desc')
-                    ->paginate(15);
+                    ->paginate(12);
+        //dd($articles);
+        // Get images
+        //$images = \App\article_images::where('article_id', $articles[0]->id)->get();
 
         $menus = $this->getMenus();
         $categories = $this->getCategories();
@@ -46,7 +50,7 @@ class FrontController extends Controller
     	$articles = DB::table('articles')
                     ->join('categories', 'articles.category_id', '=', 'categories.id')
                     ->join('users', 'articles.user_id', '=', 'users.id')
-                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
+                    ->select('articles.*', 'categories.name as category_name', 'users.name as fullname', 'articles.created_at as date_created')
                     ->where('articles.slug', "=", $slug)
                     ->get();
 
@@ -86,7 +90,7 @@ class FrontController extends Controller
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('categories.slug', '=', $category)
                     ->orderBy('id','desc')
-                    ->paginate(15);
+                    ->paginate(12);
 
         $menus = $this->getMenus();
         $categories = $this->getCategories();
@@ -121,7 +125,7 @@ class FrontController extends Controller
                     ->where('articles.title', 'like', '%'.$keyword.'%')
                     ->orWhere('articles.content', 'like', '%'.$keyword.'%')
                     ->orderBy('id','desc')
-                    ->paginate(15);
+                    ->paginate(12);
 
         $menus = $this->getMenus();
         $categories = $this->getCategories();
@@ -215,7 +219,7 @@ class FrontController extends Controller
                     ->select('articles.*', 'categories.name as category_name', 'users.name as fullname')
                     ->where('tags.slug', '=', $tag)
                     ->orderBy('id','desc')
-                    ->paginate(15);
+                    ->paginate(12);
 
         $menus = $this->getMenus();
         $categories = $this->getCategories();
@@ -245,6 +249,8 @@ class FrontController extends Controller
 
     public function getMostViewedArticles() {
         $articles = DB::table('articles')
+                    ->leftJoin('article_images', 'articles.id', '=', 'article_images.article_id')
+                    ->select('articles.*','article_images.image','articles.created_at as date_created')
                     ->where('articles.active', "=", 1)
                     ->orderBy('viewcount','desc')
                     ->paginate(5);
@@ -255,6 +261,9 @@ class FrontController extends Controller
 
     public function getRelatedArticles($categoryId, $articleId) {
         $articles = DB::table('articles')
+
+                    ->leftJoin('article_images', 'articles.id', '=', 'article_images.article_id')
+                    ->select('articles.*','article_images.image','articles.created_at as date_created')
                     ->where('articles.active', "=", 1)
                     ->Where('articles.category_id', '=', $categoryId)
                     ->Where('articles.id', '!=', $articleId)
