@@ -1,47 +1,59 @@
 @extends('layouts.front')
 
 @section('content')
-<div class="container title-margin" style="min-height: 600px;">
-    
-    <div class="content-no-sidebar">
+<div class="container title-margin bg-theme-wh" style="min-height: 600px;">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group search-box">
+                <form action="/search" method="POST" role="search">
+                    {{ csrf_field() }}
+                    @if ($keyword)
+                        <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="{{$keyword}}">
+                    @else
+                        <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="">
+                    @endif
+                    <span class="input-group-btn search-btn-wrap">
+                        <button class="btn btn-default search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
     	@foreach ($articles as $index => $article)
 
-        <div class="box-wrapper">
-			<div class="box-head">
-		        <!--<span class="like-box font-thin">
-		        	<i class="fa fa-heart-o" aria-hidden="true"></i>
-		        </span>-->
-		        <h4 class="inline-block no-margin font-light">
-		        	<a href="/{{$article->slug}}" >{{ $article->title }}</a>
-		        </h4>
-	        </div>
-	        <div class="box-foot">
-	        	Posted by <span class="box-foot-author">{{$article->fullname}}</span> in <span class="box-foot-cat">{{ $article->category_name }}</span>
-				@foreach ($article->tags as $key => $tag)
-					<span class="box-foot-tag"><a href="{{ $settings['site_url'] }}tag/{{$key}}">{{ $tag }}</a></span>
-				@endforeach
+    	<div class="col-xs-12 col-md-6 col-lg-4">
+    		<div class="article-sub-box">
+	    		<div class="box-head">
+	    			@if ($article->image != "")
+			            {!! Html::image('uploads/'.$article->image, 'alt', array( 'width' => '100%', 'height' => '', 'class' => 'img-responsive' )) !!}
+			        @else
+			        	{!! Html::image('uploads/default.png', 'alt', array( 'width' => '100%', 'height' => '', 'class' => 'img-responsive' )) !!}
+			        @endif
+		        </div>
+		        <div class="box-foot">
+		        	<h5 class="inline-block font-light">
+			        	<a href="/{{$article->slug}}" >{{ $article->title }}</a>
+			        </h5>
+		        	<div>
+			            <span class="box-foot-cat">{{$article->category_name}} / Last Update on {{ \Carbon\Carbon::parse($article->date_created)->format('d/m/Y')}}</span>
+			        </div>
+					<!--@foreach ($article->tags as $key => $tag)
+						<span class="box-foot-tag"><a href="{{ $settings['site_url'] }}tag/{{$key}}">{{ $tag }}</a></span>
+					@endforeach-->
+				</div>
 			</div>
-			@if ($index % 5 == 0 and $index != 0 and $settings['server_env'] != 'local')
-				    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		            <!-- 970 hori -->
-		            <ins class="adsbygoogle"
-		                 style="display:inline-block;width:970px;height:90px"
-		                 data-ad-client="ca-pub-1723053501613692"
-		                 data-ad-slot="7392095718"></ins>
-		            <script>
-		            (adsbygoogle = window.adsbygoogle || []).push({});
-		            </script>
-		    @endif
-		</div>
-		<div class="sep-wrap">
-			<hr class="box-separator no-margin">
-		</div>
+    	</div>
 		@endforeach
     </div>
-   
-    <div class="pagination-container">
-		<?php echo $articles->render(); ?>
-	</div>
 
+    <div class="row">
+	    <div class="col-xs-12">
+	    	<div class="pagination-container">
+				<?php echo $articles->render(); ?>
+			</div>
+		</div>
+    </div>
 </div>
 @endsection

@@ -10,7 +10,8 @@
 
 .search-box {
 	width: 100%;
-	background-color: @theme-white;
+	background-color: @theme-wh;
+    margin-bottom: 25px;
 	.box-shadow(0px 5px 16px -8px rgba(75,192,192,1));
 	.search-input,
 	.search-btn {
@@ -47,19 +48,16 @@
 	color: @theme-blue-color;
 }
 .box-foot-cat {
-	color: @theme-green-color;
+	color: #ccc;
+    font-family: 'Miriam Libre';
+    font-weight: 800;
 }
 .box-foot-tag {
-	border-radius: 10px;
-    background-color: transparent;
-    border: 1px solid @tag-border-color;
+	background-color: transparent;
     padding: 2px 5px;
-    font-size: 10px;
-}
-
-.box-foot-tag:hover {
-	background-color: #ffd89e;
-    border: 1px solid #ffd89e;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ccc;
 }
 
 .box-foot-tag-footer {
@@ -105,7 +103,14 @@
 	font-weight:400;
 	margin-left: 20px;
 }
-
+.article-sub-box {
+    min-height: 320px;
+    .box-shadow(0px 0px 24px -8px rgba(0,0,0,0.38));
+    margin-bottom: 20px;
+}
+.box-foot {
+    padding: 20px 10px 0 10px;
+}
 .box-content img {
 	border: 1px solid #04aeb5;
     border-radius: 10px;

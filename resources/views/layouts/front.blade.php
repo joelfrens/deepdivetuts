@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Miriam+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!--- CSS Files here-->
     <link rel="stylesheet" href="../assets/build/css/front.css">
@@ -31,68 +32,38 @@
 
 <body>
 <div class="page-wrapper">
-    <div class="page-header c-white">
+    <div class="page-header c-white" style="position: relative; overflow: hidden;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-xs-2">
                     <span class="logo-text">
-                        <a href="{{ $settings['site_url'] }}" class="no-link c-white">DeepDiveTuts</a>
+                        <a href="{{ $settings['site_url'] }}" class="no-link c-white">DEEPDIVE<span style="color:#ceaa3d">TUTS</span></a>
                     </span>
                 </div>
-                <div class="col-lg-10">
-                    <div class="nav-top-head">
-                        <span class="nav-top-item">
-                            <a class="nav-item-link" href="{{ $settings['site_url'] }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
-                        </span>
-                        @foreach($menus as $key => $value)
-                            <span class="nav-top-item">
-                                <a class="nav-item-link" href="{{ $settings['site_url'] }}page{{$value->link}}">{{ $value->title }}</a>
+                <div class="col-xs-10">
+                    <div class="nav-top-head" style="float: none;position: absolute; right: 0;">
+                        @foreach($categories as $key => $value)
+                            <span class="nav-top-item" style="margin-right: 4px">
+                                <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}category/{{$value->slug}}" style="color: #333;display: inline-block;padding:10px;">{{ $value->name }}</a>
                             </span>
                         @endforeach
                     </div>
                 </div>
-                
             </div>
-            @foreach($categories as $key => $value)
-                <span class="nav-top-item" style="margin-right: 4px">
-                    <a class="no-link nav-item-link" href="{{ $settings['site_url'] }}category/{{$value->slug}}" style="background-color: #fff;color: #333;display: inline-block;min-width: 100px;padding:10px;border-top:4px solid #8bc34a">{{ $value->name }}</a>
-                </span>
-            @endforeach
-        </div>
-    </div>  
-    <div >
-    <div class="container">
-        <div class="content-wrapper">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="input-group search-box">
-                        <form action="/search" method="POST" role="search">
-                            {{ csrf_field() }}
-                            @if ($keyword)
-                                <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="{{$keyword}}">
-                            @else
-                                <input type="text" class="form-control search-input" name="keyword" placeholder="Search tutorials..." value="">
-                            @endif
-                            <span class="input-group-btn search-btn-wrap">
-                                <button class="btn btn-default search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </span>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
-            @yield('content')
-        
         </div>
     </div>
 
+    <div class="page-content">
+        @yield('content')
+    </div>
+    
     <div class="page-footer">
         <div class="container">
             <div class="row border-bottom">
-                <div class="col-xs-4">
+                <div class="col-xs-12 col-md-4">
                     <div class="nav-footer">
                         <br />
-                        <h2>Links</h2>
+                        <h4 class="footer-link-title">Links</h4>
                         <ul class="footer-links">
                             <li class="nav-footer-item">
                                 <a class="nav-item-foot-link footer-link-item" href="/">Home</a>
@@ -109,11 +80,11 @@
                     </div>
                 </div>
 
-                <div class="col-xs-4">
+                <div class="col-xs-12 col-md-4">
                     
                     <div class="nav-footer">
                         <br />
-                        <h2>Contact Us</h2>
+                        <h4 class="footer-link-title">Contact Us</h4>
                         
                         <div class="nav-footer-item footer-link-item">
                             <i class="fa fa-envelope-o" aria-hidden="true"></i> {{ $settings['contact_email'] }}
@@ -133,11 +104,11 @@
                     </div>
                 </div>
 
-                <div class="col-xs-4">
+                <div class="col-xs-12 col-md-4">
                     
                     <div class="nav-footer">
                         <br />
-                        <h2>Social</h2>
+                        <h4 class="footer-link-title">Social</h4>
 
                         <span class="fa-stack fa-lg">
                           <i class="fa fa-square-o fa-stack-2x"></i>
@@ -160,21 +131,19 @@
                 </div>
             </div>
             <div class="row border-bottom">
-                <div class="col-xs-4">
-                    <br />
-                    <h2 class="footer-link-title">Categories</h2>
+                <div class="col-xs-12 col-md-4">
+                    <h4 class="footer-link-title">Categories</h4>
                     <ul class="footer-links">
                         @foreach($categories as $key => $value)
                             <li class="nav-footer-item">
-                                <a class="nav-item-link footer-link-item" href="{{ $settings['site_url'] }}category/{{$value->slug}}">{{ $value->name }}</a>
+                                <a class="av-item-foot-link footer-link-item" href="{{ $settings['site_url'] }}category/{{$value->slug}}">{{ $value->name }}</a>
                             </li>
                         @endforeach
                     </ul>
                 </div>
 
-                <div class="col-xs-4">
-                    <br />
-                    <h2 class="footer-link-title">Tags</h2>
+                <div class="col-xs-12 col-md-4">
+                    <h4 class="footer-link-title">Tags</h4>
                     <ul class="footer-links">
                         @foreach($tags as $value)
                             <span class="box-foot-tag-footer">
@@ -183,20 +152,15 @@
                         @endforeach
                     </ul>
                 </div>
-
-                <div class="col-xs-4">
-                   <!-- empty section in the footer --> 
+                <div class="col-xs-12 col-md-4">
                 </div>
             </div>
-            <br />
             <div class="row">
                 <div class="col-xs-12 copyright">
-                    &copy; deepdivetuts.com. All rights reserved.
+                    &copy;deepdivetuts.com. All rights reserved.
                 </div>
             </div>
-            <br />
         </div>
-        
     </div>
 </div>
 <script src="../assets/build/js/app_foot_web.min.js"></script>
@@ -210,6 +174,6 @@
   ga('send', 'pageview');
 
 </script>
-<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=59160efbc1797300114e3ed1&product=inline-share-buttons"></script>
+
 </body>
 </html>
